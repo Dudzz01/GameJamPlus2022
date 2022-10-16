@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fase 3.unity
     guid: cfd2dd93f768ec343a0418bab3ad7500
+  - enabled: 1
+    path: Assets/Scenes/FinalFeliz.unity
+    guid: a27469374bc4f2148bb184f04434c787
+  - enabled: 1
+    path: Assets/Scenes/FinalTriste.unity
+    guid: 8e0c957ec0c68334880ca89ace8f3e04
   m_configObjects: {}

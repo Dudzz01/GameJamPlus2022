@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScriptPlayer : MonoBehaviour
 {
@@ -10,7 +11,8 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private SpriteRenderer spritePlayer;
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ManageSpawnPoints ManageSpawn;
-   
+    [SerializeField] private GameObject textFinal;
+    [SerializeField] private AudioSource audioSource;
     public static int quantidadeErvasColetadas {get; set;}
     public float speedPlayer {get; private set;} // velocidade do player
     public bool isGround {get; private set;} // permite se o player pula ou nao
@@ -31,7 +33,7 @@ public class ScriptPlayer : MonoBehaviour
          statePlayer = "MovePlayer";
          dashPower = 10f;
          timeDurationDash = 0.6f;
-         timeCooldownDash = 2f;
+         timeCooldownDash = 1f;
          canDash = true;
          jump = false;
          isDashing = false;
@@ -45,7 +47,8 @@ public class ScriptPlayer : MonoBehaviour
              animPlayer.AnimationPlayer("IndioDash");
             return;
         }
-       
+        //Debug.Log(ScriptContador.ContadorTempoJogo);
+        
         directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel local só para a direcao h do player
 
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
@@ -182,6 +185,15 @@ public class ScriptPlayer : MonoBehaviour
             this.transform.position = ManageSpawn.SpawnPointAtual().transform.position;
             StartCoroutine(TrailRendActive());
         }
+
+        if(col.gameObject.tag == "Paje")
+        {
+            Text texto = textFinal.gameObject.GetComponent<Text>();
+            texto.enabled = true;
+            texto.text+=ScriptContador.ContadorTempoJogo.ToString("F2");
+            Destroy(col.gameObject);
+            StartCoroutine(GoMenu());
+        }
         
 
         
@@ -216,5 +228,14 @@ public class ScriptPlayer : MonoBehaviour
      yield return new WaitForSeconds(0);
 
    }
+
+   private IEnumerator GoMenu()
+   {
+     yield return new WaitForSeconds(3.5f);
+     SceneManager.LoadScene("Menu");
+     yield return new WaitForSeconds(0);
+   }
+
+   
     
 }

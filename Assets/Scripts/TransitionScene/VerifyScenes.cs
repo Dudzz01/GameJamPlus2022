@@ -4,13 +4,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class VerifyScenes : MonoBehaviour
 {
-    [SerializeField] private string nameNextScene;
-    private string[] nameScenes = new string[6]{"Menu", "Fase 1", "Fase 2", "Fase 3", "Vitoria", "Derrota"};
-
+    [SerializeField] protected string nameNextScene;
+    
     
 
-    public string GetNextScene()
+    private void Update() {
+        GetNextScene();
+    }
+    public virtual string GetNextScene()
     {
+        SceneManager.GetActiveScene();
+        if(SceneManager.GetActiveScene().name == "Fase 3")
+        {
+            if(ScriptContador.ContadorTempoJogo <60 && ScriptPlayer.quantidadeErvasColetadas==3)
+            {
+                
+                nameNextScene = "FinalFeliz";
+            }
+            else
+            {
+                nameNextScene = "FinalTriste";
+            }
+
+            
+        
+        }
+        
         return nameNextScene;
     }
 

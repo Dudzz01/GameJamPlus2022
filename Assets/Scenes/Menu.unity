@@ -207,6 +207,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 1014075820789292382, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1014075821517427081, guid: 0709f319720801341bfa3d047d966742, type: 3}
       propertyPath: m_Name
       value: ConfigPlayer
@@ -346,6 +350,7 @@ GameObject:
   - component: {fileID: 833268390}
   - component: {fileID: 833268389}
   - component: {fileID: 833268388}
+  - component: {fileID: 833268391}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -419,6 +424,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &833268391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 833268387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93f495618d531e64780f684f722c9e43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1400392488
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ TagManager:
   - Serra
   - TeleportScene
   - Erva
+  - Paje
   layers:
   - Default
   - TransparentFX

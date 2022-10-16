@@ -209,23 +209,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7395104341928612457, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_RaycastTarget
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395104341928612471, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395104341928612471, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395104342219308483, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7395104342219308483, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
-      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104341928612471, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104341928612471, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104342219308483, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104342219308483, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7395104342219308487, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_Camera
