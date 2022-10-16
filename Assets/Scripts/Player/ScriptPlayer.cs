@@ -9,7 +9,10 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private SpriteRenderer spritePlayer;
     [SerializeField] private TrailRenderer trailRenderer;
     public float speedPlayer {get; private set;} // velocidade do player
-    public bool jump {get; private set;} // permite se o player pula ou nao
+    public bool isGround {get; private set;} // permite se o player pula ou nao
+    [SerializeField]private LayerMask groundMask;
+    [SerializeField]private Transform positionPe;
+    private bool jump;
     public bool canDash {get; private set;} // permite se o player pode dar dash ou nao
     public bool isDashing {get; private set;} // verifica se o player esta executando a acao dash
     public float dashPower {get; private set;} // forca do dash
@@ -20,12 +23,12 @@ public class ScriptPlayer : MonoBehaviour
 
     private void Start() {
          speedPlayer = 6;
-         jump = false;
          statePlayer = "MovePlayer";
          dashPower = 10f;
          timeDurationDash = 0.6f;
          timeCooldownDash = 2f;
          canDash = true;
+         jump = false;
          isDashing = false;
          spritePlayer = GetComponent<SpriteRenderer>();
     }
@@ -34,16 +37,38 @@ public class ScriptPlayer : MonoBehaviour
         
         if(isDashing == true) // enquanto o player estiver "dashando" ele vai retornar para a funcao void e nao executara outro comando
         {
-            animPlayer.AnimationPlayer("IndioDash");
+             animPlayer.AnimationPlayer("IndioDash");
             return;
         }
+       
+            
+           
+        
 
-        directionPlayerH = Input.GetAxis("Horizontal"); // variavel local só para a direcao h do player
+        directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel local só para a direcao h do player
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
+
+        
+        
+        
+        
+
+        if(Input.GetKeyDown(KeyCode.W) && isGround == true) // pulo
+        {
+           
+           rig.velocity = Vector2.up * 11;
+           jump = false;
+        }
+        
+        
+        
+
+        
         InputDash();
     }
 
     private void FixedUpdate() {
+        isGround = Physics2D.OverlapCircle(positionPe.position,0.3f,groundMask);
 
         if(isDashing == true)
         {
@@ -68,19 +93,16 @@ public class ScriptPlayer : MonoBehaviour
 
         rig.velocity = new Vector2(directionPlayerH*speedPlayer,rig.velocity.y); // movimento horizontal
 
+       if(jump == true)
+       {
+         print("pulando");
+       }
+       else if(jump == false)
+       {
+         statePlayer = "JumpPlayer";
+       }
+            
         
-
-        if(Input.GetKey(KeyCode.W) && jump == true) // pulo
-        {
-            var velPlayerY = 13f;
-            rig.AddForce(new Vector2(0,velPlayerY),ForceMode2D.Impulse);
-            velPlayerY = 0;
-            jump = false;
-        }
-        else if(jump == false)
-        {
-            statePlayer = "JumpPlayer";
-        }
     }
 
     public void InputDash()// controla o input do dash
@@ -98,7 +120,7 @@ public class ScriptPlayer : MonoBehaviour
      isDashing = true;
      var originalGravityScale = rig.gravityScale;
      rig.gravityScale = 0;
-     rig.velocity = new Vector2(directionPlayerH*dashPower,rig.velocity.y);
+     rig.velocity = new Vector2(directionPlayerH*dashPower,0);
      trailRenderer.emitting = true;
      yield return new WaitForSeconds(timeDurationDash);
      isDashing = false;
@@ -109,6 +131,8 @@ public class ScriptPlayer : MonoBehaviour
      yield return null;
 
    }
+
+
 
    public void PlayerAnimMoviment(string stateAnim)
    {  
@@ -150,20 +174,23 @@ public class ScriptPlayer : MonoBehaviour
        }   
    }
 
-   private void OnCollisionEnter2D(Collision2D col) 
-   {
-     
+   private void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "Ground")
         {
             jump = true;
-            
         }
         else
         {
-            statePlayer = "JumpPlayer";
             jump = false;
         }
+
+        if(col.gameObject.tag == "PulaPula")
+        {
+            rig.velocity = Vector2.up * 22;
+        }
+    
    }
+  
    
     
 }
