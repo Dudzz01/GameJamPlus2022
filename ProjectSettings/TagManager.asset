@@ -11,6 +11,7 @@ TagManager:
   - Espinho
   - Serra
   - TeleportScene
+  - Erva
   layers:
   - Default
   - TransparentFX

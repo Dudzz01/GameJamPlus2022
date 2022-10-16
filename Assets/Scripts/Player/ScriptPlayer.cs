@@ -11,7 +11,7 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ManageSpawnPoints ManageSpawn;
    
-    //public static int quantidadeErvasColetadas {get; set;}
+    public static int quantidadeErvasColetadas {get; set;}
     public float speedPlayer {get; private set;} // velocidade do player
     public bool isGround {get; private set;} // permite se o player pula ou nao
     [SerializeField]private LayerMask groundMask;
@@ -160,6 +160,15 @@ public class ScriptPlayer : MonoBehaviour
         if(col.gameObject.tag == "PulaPula")
         {
             rig.velocity = Vector2.up * 22;
+            
+        }
+
+        if(col.gameObject.tag == "Erva")
+        {
+            quantidadeErvasColetadas+=1;
+            Destroy(col.gameObject);
+            Debug.Log(quantidadeErvasColetadas);
+            
         }
 
         if(col.gameObject.tag == "Espinho")
