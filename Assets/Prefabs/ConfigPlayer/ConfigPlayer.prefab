@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1014075820789292356}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,8 +98,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 935950807
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 2048504364, guid: df001240c6283b34296c6b7bd3df331c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -128,6 +128,7 @@ MonoBehaviour:
   animPlayer: {fileID: 1014075820789292353}
   spritePlayer: {fileID: 1014075820789292380}
   trailRenderer: {fileID: 1014075820789292355}
+  ManageSpawn: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
@@ -204,8 +205,8 @@ TrailRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 935950807
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.5
   m_Parameters:
@@ -237,7 +238,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.39231038, g: 0.73245364, b: 0.8962264, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}

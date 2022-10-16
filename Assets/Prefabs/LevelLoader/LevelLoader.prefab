@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7395104341779349667}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: LevelLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 7395104341928612456}
   - component: {fileID: 7395104341928612458}
   - component: {fileID: 7395104341928612457}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 7395104342219308486}
   - component: {fileID: 7395104342219308485}
   - component: {fileID: 7395104342219308536}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TransicaoCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -168,7 +168,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 700
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &7395104342219308486
 MonoBehaviour:
