@@ -558,6 +558,10 @@ PrefabInstance:
       value: -0.05634904
       objectReference: {fileID: 0}
     - target: {fileID: 1014075820789292380, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014075820789292380, guid: 0709f319720801341bfa3d047d966742, type: 3}
       propertyPath: m_SortingLayer
       value: 3
       objectReference: {fileID: 0}

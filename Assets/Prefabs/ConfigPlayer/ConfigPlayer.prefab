@@ -105,7 +105,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 2048504364, guid: df001240c6283b34296c6b7bd3df331c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -132,6 +132,13 @@ MonoBehaviour:
   ManageSpawn: {fileID: 0}
   textFinal: {fileID: 0}
   audioSource: {fileID: 6601832379658659472}
+  audiosPlayer:
+  - {fileID: 8300000, guid: 817e3a8051b810b4aa8082ec26abaa8a, type: 3}
+  - {fileID: 8300000, guid: 5c011f9f8fdcc1d49ae70906d58cba17, type: 3}
+  - {fileID: 8300000, guid: 7721fa89f5052374f8d10461c0da6230, type: 3}
+  - {fileID: 8300000, guid: 1a8d8539848669e41b36db9527baff94, type: 3}
+  - {fileID: 8300000, guid: a9da28b55c832b447a17887492771dc4, type: 3}
+  - {fileID: 8300000, guid: 9827f9f79a1fadb48b08474a22edb941, type: 3}
   groundMask:
     serializedVersion: 2
     m_Bits: 64

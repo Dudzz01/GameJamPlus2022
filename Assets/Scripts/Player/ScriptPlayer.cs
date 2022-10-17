@@ -13,6 +13,7 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private ManageSpawnPoints ManageSpawn;
     [SerializeField] private GameObject textFinal;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private List<AudioClip> audiosPlayer = new List<AudioClip>();
     public static int quantidadeErvasColetadas {get; set;}
     public float speedPlayer {get; private set;} // velocidade do player
     public bool isGround {get; private set;} // permite se o player pula ou nao
@@ -47,6 +48,7 @@ public class ScriptPlayer : MonoBehaviour
              animPlayer.AnimationPlayer("IndioDash");
             return;
         }
+        ConfigSound();
         //Debug.Log(ScriptContador.ContadorTempoJogo);
         
         directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel local só para a direcao h do player
@@ -57,7 +59,7 @@ public class ScriptPlayer : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.W) && isGround == true) // pulo
         {
-           
+           audioSource.PlayOneShot(audiosPlayer[4]);
            rig.velocity = Vector2.up * 11;
            jump = false;
         }
@@ -92,6 +94,7 @@ public class ScriptPlayer : MonoBehaviour
 
        if(jump == true)
        {
+
          print("pulando");
        }
        else if(jump == false)
@@ -106,8 +109,32 @@ public class ScriptPlayer : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && canDash == true)
         {
+            audioSource.PlayOneShot(audiosPlayer[5]);
             StartCoroutine(Dash());
         }
+    }
+
+
+    public void ConfigSound()
+    {
+        if(Input.GetKeyDown(KeyCode.W) && isGround == true) // pulo
+        {
+           audioSource.PlayOneShot(audiosPlayer[4]);
+           
+        }
+
+         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && isGround == true  )
+         {
+            audioSource.clip = audiosPlayer[0];
+            audioSource.loop = true;
+            audioSource.Play();
+            
+         }
+         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || isGround == false )
+         {
+            audioSource.loop = false;
+         }
+        
     }
 
    public void PlayerAnimMoviment(string stateAnim)
@@ -139,6 +166,7 @@ public class ScriptPlayer : MonoBehaviour
             break;
 
             case "JumpPlayer":
+                
                 animPlayer.AnimationPlayer("IndioPulandoo");
             break;
 
@@ -177,12 +205,14 @@ public class ScriptPlayer : MonoBehaviour
         if(col.gameObject.tag == "Espinho")
         {
             this.transform.position = ManageSpawn.SpawnPointAtual().transform.position;
+            audioSource.PlayOneShot(audiosPlayer[2]);
             StartCoroutine(TrailRendActive());
         }
 
         if(col.gameObject.tag == "Serra")
         {
             this.transform.position = ManageSpawn.SpawnPointAtual().transform.position;
+            audioSource.PlayOneShot(audiosPlayer[2]);
             StartCoroutine(TrailRendActive());
         }
 
@@ -199,6 +229,8 @@ public class ScriptPlayer : MonoBehaviour
         
     
    }
+
+  
   
 
    private IEnumerator Dash() 
@@ -235,6 +267,8 @@ public class ScriptPlayer : MonoBehaviour
      SceneManager.LoadScene("Menu");
      yield return new WaitForSeconds(0);
    }
+
+   
 
    
     
