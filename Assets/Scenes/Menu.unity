@@ -353,6 +353,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1014075820789292382, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: a1b324e3c11908843bb88a1e754c02f2, type: 2}
+    - target: {fileID: 1014075820789292382, guid: 0709f319720801341bfa3d047d966742, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
       objectReference: {fileID: 0}

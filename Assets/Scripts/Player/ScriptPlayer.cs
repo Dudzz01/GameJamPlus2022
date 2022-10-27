@@ -3,84 +3,144 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-
 public class ScriptPlayer : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rig;
-    [SerializeField] private ScriptAnimatorPlayer animPlayer;
-    [SerializeField] private SpriteRenderer spritePlayer;
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ManageSpawnPoints ManageSpawn;
     [SerializeField] private GameObject textFinal;
+    public static int QuantidadeErvasColetadas {get; set;}
+    #region SoundsPlayerVariables
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private List<AudioClip> audiosPlayer = new List<AudioClip>();
-    public static int quantidadeErvasColetadas {get; set;}
-    public float speedPlayer {get; private set;} // velocidade do player
-    public bool isGround {get; private set;} // permite se o player pula ou nao
+    #endregion
+    #region AnimationPlayerVariables
+    [SerializeField] private ScriptAnimatorPlayer animPlayer;
+    [SerializeField] private SpriteRenderer spritePlayer;
+    public string statePlayer{get; private set;} // verificar o state do player, só declarei, nao implementei ainda
+    #endregion
+    #region WallJump/Jump/Collisions Variables
+    public bool IsGround {get; private set;} // verifica se o player está colidindo com o chao ou nao
+    public bool IsWallRight {get; private set;} // verifica se o player está colidindo com a parede ou nao
+    public bool IsWallLeft{get; private set;}
+    public bool IsSliding {get; private set;}
+    public bool IsWallJump {get; private set;}
+    public bool CanMove{get; private set;}
     [SerializeField]private LayerMask groundMask;
-    [SerializeField]private Transform positionPe;
+    [SerializeField]private LayerMask objectsGroundMask;
+    [SerializeField]private Transform transformFeet;
+    [SerializeField]private Transform transformArm;
+    private Vector2 rightOffSetArm;
+    private Vector2 leftOffSetArm;
     private bool jump;
+    #endregion
+    #region DashVariables
+    
     public bool canDash {get; private set;} // permite se o player pode dar dash ou nao
     public bool isDashing {get; private set;} // verifica se o player esta executando a acao dash
     public float dashPower {get; private set;} // forca do dash
     public float timeDurationDash {get; private set;} // tempo de duracao do dash
     public float timeCooldownDash {get; private set;} // tempo de cooldown do dash
-    public string statePlayer{get; private set;} // verificar o state do player, só declarei, nao implementei ainda
+    #endregion
+    #region MovimentPlayerVariables
+    public float SpeedPlayer {get; private set;} // velocidade do player
     public float directionPlayerH{get; private set;} // direcao horizontal do player
+    public float directionPlayerY{get; private set;} // direcao horizontal do player
+    #endregion
+    
+    private void Awake() 
+    {
+        rightOffSetArm = new Vector2(0.13f,0);
+        leftOffSetArm = new Vector2(-0.03f,0);
+        spritePlayer = GetComponent<SpriteRenderer>();
+        trailRenderer.sortingLayerName = "Player";
+        statePlayer = "MovePlayer";
+        CanMove = true;
+    }
 
-    private void Start() {
-         trailRenderer.sortingLayerName = "Player";
-         speedPlayer = 6;
-         statePlayer = "MovePlayer";
+    private void Start() 
+    {
+         SpeedPlayer = 6;
          dashPower = 10f;
          timeDurationDash = 0.6f;
          timeCooldownDash = 1f;
          canDash = true;
          jump = false;
          isDashing = false;
-         spritePlayer = GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
-        
+
         if(isDashing == true) // enquanto o player estiver "dashando" ele vai retornar para a funcao void e nao executara outro comando
         {
-             animPlayer.AnimationPlayer("IndioDash");
+            animPlayer.AnimationPlayer("IndioDash");
             return;
         }
-        ConfigSound();
-        //Debug.Log(ScriptContador.ContadorTempoJogo);
-        
-        directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel local só para a direcao h do player
 
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
 
-        isGround = Physics2D.OverlapCircle(positionPe.position,0.3f,groundMask); // colisao com o chao
+        directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel para saber a direcao h do player
+        directionPlayerY = Input.GetAxisRaw("Vertical"); // variavel para saber a direcao y do player
 
-        if(Input.GetKeyDown(KeyCode.W) && isGround == true) // pulo
-        {
-           audioSource.PlayOneShot(audiosPlayer[4]);
-           rig.velocity = Vector2.up * 11;
-           jump = false;
-        }
+        
+        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
+        IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask);
+        IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask);
 
-        InputDash();
+        Walk();
+        JumpInput();
+        SlidingWall();
+        
+        DashAction();
+        
+        
+        JumpMovimentEffects();
+        SoundSettings();
     }
 
-    private void FixedUpdate() {
-
+    private void FixedUpdate()
+    {
         if(isDashing == true)
         {
             statePlayer = "DashPlayer";
             return;
         }
-
-        MovePlayer();
+        WallJump();
+        
         
     }
+    private void SlidingWall()
+    {
+        if((IsWallRight || IsWallLeft) && directionPlayerH !=0 && !IsGround)
+        {
+             IsSliding = true;
+             rig.velocity = new Vector2(rig.velocity.x, -1);
+        }
+        else
+        {
+            IsSliding = false;
+        }
+       
+    }
 
-    public void MovePlayer()// controla o movimento horizontal e pulo do player
+    private void WallJump()
     {   
+        if(IsWallJump == true)
+        {
+            if(IsWallRight)
+            {
+                rig.velocity = new Vector2(-15,10);
+            }
+            if(IsWallLeft)
+            {
+                rig.velocity = new Vector2(15,10);
+            }     
+        }
+    }
+
+    
+    private void Walk()
+    {
         if(directionPlayerH == 0)
         {
             statePlayer = "ParadoPlayer";
@@ -89,23 +149,68 @@ public class ScriptPlayer : MonoBehaviour
         {
              statePlayer = "MovimentoPlayer";
         }
-
-        rig.velocity = new Vector2(directionPlayerH*speedPlayer,rig.velocity.y); // movimento horizontal
-
-       if(jump == true)
-       {
-
-         print("pulando");
-       }
-       else if(jump == false)
-       {
-         statePlayer = "JumpPlayer";
-       }
-            
+        if(CanMove)
+        {
+            rig.velocity = new Vector2(directionPlayerH*SpeedPlayer,rig.velocity.y);
+        }
         
     }
 
-    public void InputDash()// controla o input do dash
+    private void JumpAction()
+    {
+           audioSource.PlayOneShot(audiosPlayer[4]); // som do pulo
+           rig.velocity = Vector2.up*11;
+           jump = false;
+    }
+
+    private bool JumpInput()
+    {
+        if(Input.GetKeyDown(KeyCode.W) && IsGround == true)
+        {
+            jump = true;
+        }
+        if(jump)
+        {
+            JumpAction();
+        }
+        if(Input.GetKeyDown(KeyCode.W) && IsSliding)
+        {
+            IsWallJump = true;
+            CanMove = false;
+            Invoke("StopWallJump",0.1f);
+        }
+
+        return jump;
+    }
+
+    private void StopWallJump()
+    {
+        IsWallJump = false;
+        CanMove = true;
+    }
+
+
+    private void JumpMovimentEffects()
+    {
+        float fallMultiplier = 2.5f;
+        float lowJumpMultiplier = 2;
+
+        if(rig.velocity.y < 0)
+        {
+            rig.velocity+= Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+        }
+        else if(rig.velocity.y>0 && !Input.GetKey(KeyCode.W))
+        {
+            rig.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+        } 
+
+        if(IsGround!=true)
+        {
+            statePlayer = "JumpPlayer";
+        }
+    }
+
+    public void DashAction()// controla o input do dash
     {
         if(Input.GetKeyDown(KeyCode.Space) && canDash == true)
         {
@@ -115,22 +220,22 @@ public class ScriptPlayer : MonoBehaviour
     }
 
 
-    public void ConfigSound()
+    public void SoundSettings()
     {
-        if(Input.GetKeyDown(KeyCode.W) && isGround == true) // pulo
+        if(Input.GetKeyDown(KeyCode.W) && IsGround == true) // pulo
         {
            audioSource.PlayOneShot(audiosPlayer[4]);
            
         }
 
-         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && isGround == true  )
+         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && IsGround == true  )
          {
             audioSource.clip = audiosPlayer[0];
             audioSource.loop = true;
             audioSource.Play();
             
          }
-         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || isGround == false )
+         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || IsGround == false )
          {
             audioSource.loop = false;
          }
@@ -139,6 +244,8 @@ public class ScriptPlayer : MonoBehaviour
 
    public void PlayerAnimMoviment(string stateAnim)
    {  
+
+     
         if(directionPlayerH > 0)
         {
                 spritePlayer.flipX = false;
@@ -148,6 +255,9 @@ public class ScriptPlayer : MonoBehaviour
                 spritePlayer.flipX = true;
         }
 
+     
+     
+        
        switch(stateAnim)
        {
             case "MovimentoPlayer":
@@ -179,26 +289,18 @@ public class ScriptPlayer : MonoBehaviour
    }
 
    private void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.tag == "Ground")
-        {
-            jump = true;
-        }
-        else
-        {
-            jump = false;
-        }
 
         if(col.gameObject.tag == "PulaPula")
         {
-            rig.velocity = Vector2.up * 22;
+            rig.velocity = Vector2.up * 27;
             
         }
 
         if(col.gameObject.tag == "Erva")
         {
-            quantidadeErvasColetadas+=1;
+            QuantidadeErvasColetadas+=1;
             Destroy(col.gameObject);
-            Debug.Log(quantidadeErvasColetadas);
+            Debug.Log(QuantidadeErvasColetadas);
             
         }
 
@@ -228,6 +330,15 @@ public class ScriptPlayer : MonoBehaviour
 
         
     
+   }
+
+   private void OnCollisionStay2D(Collision2D col) {
+    
+        if(col.gameObject.tag == "PulaPula")
+        {
+            rig.velocity = Vector2.up * 27;
+            
+        }
    }
 
   
@@ -270,6 +381,12 @@ public class ScriptPlayer : MonoBehaviour
 
    
 
+    private void OnDrawGizmos() {
+        Gizmos.DrawWireSphere((Vector2)transformArm.position+rightOffSetArm,0.19f);
+        Gizmos.DrawWireSphere((Vector2)transformArm.position+leftOffSetArm,0.19f);
+        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.24f));
+        
+    }
    
     
 }

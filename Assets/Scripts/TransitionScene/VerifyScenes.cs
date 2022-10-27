@@ -16,7 +16,7 @@ public class VerifyScenes : MonoBehaviour
         SceneManager.GetActiveScene();
         if(SceneManager.GetActiveScene().name == "Fase 3")
         {
-            if(ScriptContador.ContadorTempoJogo <60 && ScriptPlayer.quantidadeErvasColetadas==3)
+            if(ScriptContador.ContadorTempoJogo <60 && ScriptPlayer.QuantidadeErvasColetadas==3)
             {
                 
                 nameNextScene = "FinalFeliz";

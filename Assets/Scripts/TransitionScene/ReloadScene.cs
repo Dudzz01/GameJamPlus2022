@@ -6,7 +6,7 @@ public class ReloadScene : MonoBehaviour
 {
     
     private void Start() {
-        ScriptPlayer.quantidadeErvasColetadas = 0;
+        ScriptPlayer.QuantidadeErvasColetadas = 0;
     }
 
 }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &717698087882615274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7175105390032852509}
+  m_Layer: 0
+  m_Name: ArmPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7175105390032852509
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717698087882615274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.063, y: -0.18, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1014075820789292383}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1014075820789292379
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +68,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1014075821894235257}
+  - {fileID: 7175105390032852509}
   m_Father: {fileID: 1014075821517427082}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -105,7 +137,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 2048504364, guid: df001240c6283b34296c6b7bd3df331c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 1
+  m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -126,8 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rig: {fileID: 1014075820789292382}
-  animPlayer: {fileID: 1014075820789292353}
-  spritePlayer: {fileID: 1014075820789292380}
   trailRenderer: {fileID: 1014075820789292355}
   ManageSpawn: {fileID: 0}
   textFinal: {fileID: 0}
@@ -139,10 +169,16 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 1a8d8539848669e41b36db9527baff94, type: 3}
   - {fileID: 8300000, guid: a9da28b55c832b447a17887492771dc4, type: 3}
   - {fileID: 8300000, guid: 9827f9f79a1fadb48b08474a22edb941, type: 3}
+  animPlayer: {fileID: 1014075820789292353}
+  spritePlayer: {fileID: 1014075820789292380}
   groundMask:
     serializedVersion: 2
     m_Bits: 64
-  positionPe: {fileID: 1014075821894235257}
+  objectsGroundMask:
+    serializedVersion: 2
+    m_Bits: 256
+  transformFeet: {fileID: 1014075821894235257}
+  transformArm: {fileID: 7175105390032852509}
 --- !u!95 &1014075820789292354
 Animator:
   serializedVersion: 4
@@ -441,7 +477,7 @@ GameObject:
   m_Layer: 0
   m_Name: "P\xE9Player"
   m_TagString: Untagged
-  m_Icon: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -453,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014075821894235256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.016, y: -0.43, z: -0.045652244}
+  m_LocalPosition: {x: 0.008, y: -0.502, z: -0.045652244}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

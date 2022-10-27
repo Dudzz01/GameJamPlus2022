@@ -1139,7 +1139,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -2616957229734399762, guid: f0d0ea8d9f87b444daaaf3e35cb88c77, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f0d0ea8d9f87b444daaaf3e35cb88c77, type: 3}
 --- !u!1001 &1014075821529133392
 PrefabInstance:
@@ -1352,11 +1353,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2040497854409668428, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2040497854409668428, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 4909939404367705728, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Size.x
@@ -2052,7 +2053,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6156793751788980630, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 6483314935765292661, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Size.x
@@ -8860,7 +8861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8060453162325556777, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_TagString
-      value: Ground
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8247046541040370414, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Name
@@ -8932,6 +8933,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7395104341928612471, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104342219308483, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
