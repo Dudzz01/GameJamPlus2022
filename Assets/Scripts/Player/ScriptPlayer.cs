@@ -133,12 +133,13 @@ public class ScriptPlayer : MonoBehaviour
             
             if(IsWallRight)
             {
-                rig.velocity = new Vector2(-15,10);
-                
+                rig.velocity = new Vector2(-10,10);
+                spritePlayer.flipX = true;
             }
             if(IsWallLeft)
             {
-                rig.velocity = new Vector2(15,10);
+                rig.velocity = new Vector2(10,10);
+                spritePlayer.flipX = false;
                 
             } 
             statePlayer = "JumpPlayer";
@@ -186,7 +187,7 @@ public class ScriptPlayer : MonoBehaviour
             IsWallJump = true;
             CanMove = false;
             IsWallJumping = true;
-            Invoke("StopWallJump",0.1f);  
+            Invoke("StopWallJump",0.2f);  
         }
         return jump;
     }
@@ -280,7 +281,8 @@ public class ScriptPlayer : MonoBehaviour
    public void PlayerAnimMoviment(string stateAnim)
    {  
         
-     
+      if(CanMove)
+      {
         if(directionPlayerH > 0)
         {
                 spritePlayer.flipX = false;
@@ -289,6 +291,8 @@ public class ScriptPlayer : MonoBehaviour
         {
                 spritePlayer.flipX = true;
         }
+      }
+        
 
      
      
