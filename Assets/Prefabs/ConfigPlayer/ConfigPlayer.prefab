@@ -161,6 +161,7 @@ MonoBehaviour:
   trailRenderer: {fileID: 1014075820789292355}
   ManageSpawn: {fileID: 0}
   textFinal: {fileID: 0}
+  sprPlayerSliding: {fileID: 445734786, guid: 8c523c92ab3a99d418bc7b80df78fa41, type: 3}
   audioSource: {fileID: 6601832379658659472}
   audiosPlayer:
   - {fileID: 8300000, guid: 817e3a8051b810b4aa8082ec26abaa8a, type: 3}

@@ -25,6 +25,7 @@ public class ScriptPlayer : MonoBehaviour
     public bool IsWallLeft{get; private set;}
     public bool IsSliding {get; private set;}
     public bool IsWallJump {get; private set;}
+    public bool IsWallJumping {get; private set;}
     public bool CanMove{get; private set;}
     [SerializeField]private LayerMask groundMask;
     [SerializeField]private LayerMask objectsGroundMask;
@@ -113,6 +114,7 @@ public class ScriptPlayer : MonoBehaviour
     {
         if((IsWallRight || IsWallLeft) && directionPlayerH !=0 && !IsGround)
         {
+             statePlayer = "SlidingPlayer";
              IsSliding = true;
              rig.velocity = new Vector2(rig.velocity.x, -1);
         }
@@ -125,35 +127,41 @@ public class ScriptPlayer : MonoBehaviour
 
     private void WallJump()
     {   
+        
         if(IsWallJump == true)
         {
+            
             if(IsWallRight)
             {
                 rig.velocity = new Vector2(-15,10);
+                
             }
             if(IsWallLeft)
             {
                 rig.velocity = new Vector2(15,10);
-            }     
+                
+            } 
+            statePlayer = "JumpPlayer";
+        
         }
+        
     }
 
     
     private void Walk()
     {
-        if(directionPlayerH == 0)
+        if(directionPlayerH == 0 && IsWallJumping == false)
         {
             statePlayer = "ParadoPlayer";
         }
-        else
+        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false )
         {
              statePlayer = "MovimentoPlayer";
         }
         if(CanMove)
         {
             rig.velocity = new Vector2(directionPlayerH*SpeedPlayer,rig.velocity.y);
-        }
-        
+        }  
     }
 
     private void JumpAction()
@@ -177,9 +185,9 @@ public class ScriptPlayer : MonoBehaviour
         {
             IsWallJump = true;
             CanMove = false;
-            Invoke("StopWallJump",0.1f);
+            IsWallJumping = true;
+            Invoke("StopWallJump",0.1f);  
         }
-
         return jump;
     }
 
@@ -204,10 +212,17 @@ public class ScriptPlayer : MonoBehaviour
             rig.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         } 
 
-        if(IsGround!=true)
+        if(IsGround!=true && IsSliding == false && IsWallJumping == false)
         {
             statePlayer = "JumpPlayer";
         }
+        
+        if(IsGround)
+        {
+            IsWallJumping = false;
+        }
+        
+        
     }
 
     public void DashAction()// controla o input do dash
@@ -217,6 +232,26 @@ public class ScriptPlayer : MonoBehaviour
             audioSource.PlayOneShot(audiosPlayer[5]);
             StartCoroutine(Dash());
         }
+    }
+
+    public void ConfigDashVelocity()
+    {
+     if(directionPlayerH!=0)
+     {
+        rig.velocity = new Vector2(directionPlayerH*dashPower,0);
+        return;
+     }
+     //caso o player esteja parado, ou seja, directionPlayerH = 0...
+     if(spritePlayer.flipX == false)
+     {
+        rig.velocity = new Vector2(1*dashPower,0);
+     }
+     else if(spritePlayer.flipX == true)
+     {
+        rig.velocity = new Vector2(-1*dashPower,0);
+     }
+      
+        return;
     }
 
 
@@ -244,7 +279,7 @@ public class ScriptPlayer : MonoBehaviour
 
    public void PlayerAnimMoviment(string stateAnim)
    {  
-
+        
      
         if(directionPlayerH > 0)
         {
@@ -278,6 +313,16 @@ public class ScriptPlayer : MonoBehaviour
             case "JumpPlayer":
                 
                 animPlayer.AnimationPlayer("IndioPulandoo");
+            break;
+
+            case "SlidingPlayer":
+                
+                animPlayer.AnimationPlayer("IndioSliding");
+            break;
+
+            case "WallJumpPlayer":
+                
+                animPlayer.AnimationPlayer("WallJumpPlayer");
             break;
 
             default:
@@ -346,12 +391,11 @@ public class ScriptPlayer : MonoBehaviour
 
    private IEnumerator Dash() 
    {
-     
      canDash = false;
      isDashing = true;
      var originalGravityScale = rig.gravityScale;
      rig.gravityScale = 0;
-     rig.velocity = new Vector2(directionPlayerH*dashPower,0);
+     ConfigDashVelocity();
      trailRenderer.emitting = true;
      yield return new WaitForSeconds(timeDurationDash);
      isDashing = false;
@@ -379,6 +423,7 @@ public class ScriptPlayer : MonoBehaviour
      yield return new WaitForSeconds(0);
    }
 
+  
    
 
     private void OnDrawGizmos() {

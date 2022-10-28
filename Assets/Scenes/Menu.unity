@@ -287,6 +287,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TeleportOtherScene
       objectReference: {fileID: 0}
+    - target: {fileID: 3433656574326528618, guid: f0d0ea8d9f87b444daaaf3e35cb88c77, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3663731946841404081, guid: f0d0ea8d9f87b444daaaf3e35cb88c77, type: 3}
       propertyPath: m_RootOrder
       value: 7
