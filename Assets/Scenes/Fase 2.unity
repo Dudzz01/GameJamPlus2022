@@ -8955,6 +8955,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5331128284040450676, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5331128284040450679, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
       propertyPath: orthographic size
       value: 7.5637593
@@ -9003,7 +9007,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 967575616717393709, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
 --- !u!20 &1249462881 stripped
 Camera:

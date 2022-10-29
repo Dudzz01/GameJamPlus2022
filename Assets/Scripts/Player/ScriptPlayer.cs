@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public class ScriptPlayer : MonoBehaviour
+public sealed class ScriptPlayer : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rig;
     [SerializeField] private TrailRenderer trailRenderer;
@@ -21,6 +21,8 @@ public class ScriptPlayer : MonoBehaviour
     #endregion
     #region WallJump/Jump/Collisions Variables
     public bool IsGround {get; private set;} // verifica se o player está colidindo com o chao ou nao
+    public float IsGroundTimerJumpCoyote{get; private set;}
+    public float IsGroundTimerJumpNormal{get; private set;}
     public bool IsWallRight {get; private set;} // verifica se o player está colidindo com a parede ou nao
     public bool IsWallLeft{get; private set;}
     public bool IsSliding {get; private set;}
@@ -44,13 +46,14 @@ public class ScriptPlayer : MonoBehaviour
     public float timeCooldownDash {get; private set;} // tempo de cooldown do dash
     #endregion
     #region MovimentPlayerVariables
-    public float SpeedPlayer {get; private set;} // velocidade do player
+    public float SpeedPlayerH {get; private set;} // velocidade do player
     public float directionPlayerH{get; private set;} // direcao horizontal do player
     public float directionPlayerY{get; private set;} // direcao horizontal do player
     #endregion
-    
+    float cont;
     private void Awake() 
     {
+        SpeedPlayerH = 6f; 
         rightOffSetArm = new Vector2(0.13f,0);
         leftOffSetArm = new Vector2(-0.03f,0);
         spritePlayer = GetComponent<SpriteRenderer>();
@@ -61,10 +64,9 @@ public class ScriptPlayer : MonoBehaviour
 
     private void Start() 
     {
-         SpeedPlayer = 6;
-         dashPower = 10f;
+         dashPower = 12f;
          timeDurationDash = 0.6f;
-         timeCooldownDash = 1f;
+         timeCooldownDash = 0.5f;
          canDash = true;
          jump = false;
          isDashing = false;
@@ -79,24 +81,31 @@ public class ScriptPlayer : MonoBehaviour
         }
 
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
-
+        #region DirectionsPlayer
         directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel para saber a direcao h do player
         directionPlayerY = Input.GetAxisRaw("Vertical"); // variavel para saber a direcao y do player
-
-        
-        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
+        #endregion
+        #region CollidersPlayer
+        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.15f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
         IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask);
         IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask);
-
+        #endregion
+        #region ActionPlayer
         Walk();
+        JumpMovimentEffects();
         JumpInput();
         SlidingWall();
         
-        DashAction();
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            DashAction();
+        }
+        #endregion
+        #region ConfigActionsPlayer
         
-        
-        JumpMovimentEffects();
         SoundSettings();
+        #endregion
+       
     }
 
     private void FixedUpdate()
@@ -116,7 +125,7 @@ public class ScriptPlayer : MonoBehaviour
         {
              statePlayer = "SlidingPlayer";
              IsSliding = true;
-             rig.velocity = new Vector2(rig.velocity.x, -1);
+             rig.velocity = new Vector2(rig.velocity.x, -2);
         }
         else
         {
@@ -128,20 +137,21 @@ public class ScriptPlayer : MonoBehaviour
     private void WallJump()
     {   
         
+        
         if(IsWallJump == true)
         {
             
             if(IsWallRight)
             {
-                rig.velocity = new Vector2(-10,10);
-                spritePlayer.flipX = true;
+               rig.velocity = new Vector2(-10,10);
+               spritePlayer.flipX = true;
             }
             if(IsWallLeft)
             {
                 rig.velocity = new Vector2(10,10);
                 spritePlayer.flipX = false;
                 
-            } 
+            }
             statePlayer = "JumpPlayer";
         
         }
@@ -160,24 +170,31 @@ public class ScriptPlayer : MonoBehaviour
              statePlayer = "MovimentoPlayer";
         }
         if(CanMove)
-        {
-            rig.velocity = new Vector2(directionPlayerH*SpeedPlayer,rig.velocity.y);
+        {   //movimento de walk do player otimizado, para funcionar de forma mais fluida
+            float horizontalSpeedPlayerH = rig.velocity.x;
+            horizontalSpeedPlayerH += directionPlayerH;
+            horizontalSpeedPlayerH *= Mathf.Pow(0.1f,Time.deltaTime*10);
+            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f),rig.velocity.y);
         }  
     }
 
     private void JumpAction()
     {
            audioSource.PlayOneShot(audiosPlayer[4]); // som do pulo
-           rig.velocity = Vector2.up*11;
+           rig.velocity = new Vector2(rig.velocity.x,11);
            jump = false;
     }
 
     private bool JumpInput()
     {
-        if(Input.GetKeyDown(KeyCode.W) && IsGround == true)
+        if( IsGroundTimerJumpNormal > 0 && IsGroundTimerJumpCoyote>0)
         {
             jump = true;
+            IsGroundTimerJumpCoyote = 0;
+            IsGroundTimerJumpNormal = 0;
+            Debug.Log($"Tempo pular: {IsGroundTimerJumpCoyote}");
         }
+        
         if(jump)
         {
             JumpAction();
@@ -201,8 +218,11 @@ public class ScriptPlayer : MonoBehaviour
 
     private void JumpMovimentEffects()
     {
-        float fallMultiplier = 2.5f;
-        float lowJumpMultiplier = 2;
+        float fallMultiplier = 5f;
+        float lowJumpMultiplier = 4f;
+        const float valueTimerJumpCoyote = 0.15f; // efeito coyote
+        const float valueTimerJumpNormal = 0.15f;
+        
 
         if(rig.velocity.y < 0)
         {
@@ -221,14 +241,29 @@ public class ScriptPlayer : MonoBehaviour
         if(IsGround)
         {
             IsWallJumping = false;
+            IsGroundTimerJumpCoyote = valueTimerJumpCoyote;
+        }
+        else
+        {
+            IsGroundTimerJumpCoyote-=Time.deltaTime;
+        }
+
+        if(Input.GetKeyDown(KeyCode.W))
+        {
+             IsGroundTimerJumpNormal = valueTimerJumpNormal;
+        }
+        else
+        {
+             IsGroundTimerJumpNormal-=Time.deltaTime;
         }
         
+       
         
     }
 
     public void DashAction()// controla o input do dash
     {
-        if(Input.GetKeyDown(KeyCode.Space) && canDash == true)
+        if(canDash == true)
         {
             audioSource.PlayOneShot(audiosPlayer[5]);
             StartCoroutine(Dash());
@@ -279,8 +314,7 @@ public class ScriptPlayer : MonoBehaviour
     }
 
    public void PlayerAnimMoviment(string stateAnim)
-   {  
-        
+   {    
       if(CanMove)
       {
         if(directionPlayerH > 0)
@@ -292,11 +326,6 @@ public class ScriptPlayer : MonoBehaviour
                 spritePlayer.flipX = true;
         }
       }
-        
-
-     
-     
-        
        switch(stateAnim)
        {
             case "MovimentoPlayer":
@@ -341,7 +370,7 @@ public class ScriptPlayer : MonoBehaviour
 
         if(col.gameObject.tag == "PulaPula")
         {
-            rig.velocity = Vector2.up * 27;
+            rig.velocity = Vector2.up * 35;
             
         }
 
@@ -375,23 +404,16 @@ public class ScriptPlayer : MonoBehaviour
             Destroy(col.gameObject);
             StartCoroutine(GoMenu());
         }
-        
-
-        
-    
    }
 
    private void OnCollisionStay2D(Collision2D col) {
     
         if(col.gameObject.tag == "PulaPula")
         {
-            rig.velocity = Vector2.up * 27;
+            rig.velocity = Vector2.up * 35;
             
         }
    }
-
-  
-  
 
    private IEnumerator Dash() 
    {
@@ -408,16 +430,13 @@ public class ScriptPlayer : MonoBehaviour
      yield return new WaitForSeconds(timeCooldownDash);
      canDash = true;
      yield return null;
-
    }
     private IEnumerator TrailRendActive() 
    {
-     
      trailRenderer.enabled = false;
      yield return new WaitForSeconds(1.5f);
      trailRenderer.enabled = true;
      yield return new WaitForSeconds(0);
-
    }
 
    private IEnumerator GoMenu()
@@ -430,11 +449,11 @@ public class ScriptPlayer : MonoBehaviour
   
    
 
-    private void OnDrawGizmos() {
+    private void OnDrawGizmos() 
+    {
         Gizmos.DrawWireSphere((Vector2)transformArm.position+rightOffSetArm,0.19f);
         Gizmos.DrawWireSphere((Vector2)transformArm.position+leftOffSetArm,0.19f);
-        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.24f));
-        
+        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.15f));
     }
    
     

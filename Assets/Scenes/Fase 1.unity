@@ -848,9 +848,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textContador: {fileID: 1086684908}
-  objectsContador:
-  - {fileID: 354707280}
-  - {fileID: 1086684906}
+  objectContador: {fileID: 354707281}
 --- !u!4 &1259127109
 Transform:
   m_ObjectHideFlags: 0
@@ -1246,6 +1244,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 5331128284040450676, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5331128284040450679, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
       propertyPath: orthographic size
       value: 7.5637608
@@ -1298,7 +1300,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 967575616717393709, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ae78510edea73c54fb45daaf2fa420a1, type: 3}
 --- !u!1001 &6530839407789417801
 PrefabInstance:

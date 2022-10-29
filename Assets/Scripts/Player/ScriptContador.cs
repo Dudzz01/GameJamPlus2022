@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class ScriptContador : MonoBehaviour
 {
     [SerializeField] private Text textContador;
-    [SerializeField] private GameObject[] objectsContador = new GameObject[2];
+    [SerializeField] private Transform objectContador;
     public static float ContadorTempoJogo{get; set;}
 
     private void Start() {
@@ -18,10 +18,10 @@ public class ScriptContador : MonoBehaviour
         ContadorTempoJogo+=Time.deltaTime;
         textContador.text = ContadorTempoJogo.ToString("F2");
         
-         DontDestroyOnLoad(this.gameObject);
-         DontDestroyOnLoad(this.objectsContador[0]);
-         DontDestroyOnLoad(this.objectsContador[1]);
-        
+         DontDestroyOnLoad(this.transform.root.gameObject);
+         DontDestroyOnLoad(this.objectContador.root.gameObject);
+         
+         
          DestroySystemContador();//So acontecera na fase final ou menu
     
         //Debug.Log(contadorTempoJogo);
@@ -32,8 +32,8 @@ public class ScriptContador : MonoBehaviour
          if(SceneManager.GetActiveScene().name == "FinalFeliz" || SceneManager.GetActiveScene().name == "FinalTriste" || SceneManager.GetActiveScene().name == "Menu")
          {
              Destroy(this.gameObject);
-             Destroy(this.objectsContador[0]);
-             Destroy(this.objectsContador[1]);
+             Destroy(this.objectContador.gameObject);
+           //  Destroy(this.objectsContador[1]);
          }
         
     }

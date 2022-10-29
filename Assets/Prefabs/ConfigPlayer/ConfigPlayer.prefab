@@ -161,7 +161,6 @@ MonoBehaviour:
   trailRenderer: {fileID: 1014075820789292355}
   ManageSpawn: {fileID: 0}
   textFinal: {fileID: 0}
-  sprPlayerSliding: {fileID: 445734786, guid: 8c523c92ab3a99d418bc7b80df78fa41, type: 3}
   audioSource: {fileID: 6601832379658659472}
   audiosPlayer:
   - {fileID: 8300000, guid: 817e3a8051b810b4aa8082ec26abaa8a, type: 3}
@@ -490,7 +489,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1014075821894235256}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.008, y: -0.502, z: -0.045652244}
+  m_LocalPosition: {x: 0.008, y: -0.428, z: -0.045652244}
   m_LocalScale: {x: 1, y: 1, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []

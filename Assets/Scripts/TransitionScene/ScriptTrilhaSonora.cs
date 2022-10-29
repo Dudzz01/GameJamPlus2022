@@ -10,7 +10,7 @@ public class ScriptTrilhaSonora : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.transform.root.gameObject);
         DestroyTrilhaSonora();
         
     }
