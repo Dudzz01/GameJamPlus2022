@@ -46,14 +46,11 @@ public sealed class ScriptPlayer : MonoBehaviour
     public float timeCooldownDash {get; private set;} // tempo de cooldown do dash
     #endregion
     #region MovimentPlayerVariables
-    public float SpeedPlayerH {get; private set;} // velocidade do player
     public float directionPlayerH{get; private set;} // direcao horizontal do player
     public float directionPlayerY{get; private set;} // direcao horizontal do player
     #endregion
-    float cont;
     private void Awake() 
-    {
-        SpeedPlayerH = 6f; 
+    { 
         rightOffSetArm = new Vector2(0.13f,0);
         leftOffSetArm = new Vector2(-0.03f,0);
         spritePlayer = GetComponent<SpriteRenderer>();
@@ -238,6 +235,8 @@ public sealed class ScriptPlayer : MonoBehaviour
             statePlayer = "JumpPlayer";
         }
         
+        #region Coyote/Responsive Jump
+        //Coyote Jump
         if(IsGround)
         {
             IsWallJumping = false;
@@ -247,18 +246,16 @@ public sealed class ScriptPlayer : MonoBehaviour
         {
             IsGroundTimerJumpCoyote-=Time.deltaTime;
         }
-
+        //Normal Jump
         if(Input.GetKeyDown(KeyCode.W))
         {
-             IsGroundTimerJumpNormal = valueTimerJumpNormal;
+            IsGroundTimerJumpNormal = valueTimerJumpNormal;
         }
         else
         {
-             IsGroundTimerJumpNormal-=Time.deltaTime;
+            IsGroundTimerJumpNormal-=Time.deltaTime;
         }
-        
-       
-        
+        #endregion 
     }
 
     public void DashAction()// controla o input do dash
