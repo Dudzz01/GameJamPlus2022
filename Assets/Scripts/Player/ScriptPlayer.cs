@@ -1,9 +1,10 @@
- using System.Collections;
+   using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-public sealed class ScriptPlayer : MonoBehaviour
+using UnityEngine.Profiling;
+public class ScriptPlayer : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rig;
     [SerializeField] private TrailRenderer trailRenderer;
@@ -22,13 +23,13 @@ public sealed class ScriptPlayer : MonoBehaviour
     #region WallJump/Jump/Collisions Variables
     public bool IsGround {get; private set;} // verifica se o player está colidindo com o chao ou nao
     public float IsGroundTimerJumpCoyote{get; private set;}
-    public float IsGroundTimerJumpNormal{get; private set;}
     public bool IsWallRight {get; private set;} // verifica se o player está colidindo com a parede ou nao
     public bool IsWallLeft{get; private set;}
     public bool IsSliding {get; private set;}
     public bool IsWallJump {get; private set;}
     public bool IsWallJumping {get; private set;}
     public bool CanMove{get; private set;}
+    private bool doubleJump;
     [SerializeField]private LayerMask groundMask;
     [SerializeField]private LayerMask objectsGroundMask;
     [SerializeField]private Transform transformFeet;
@@ -57,65 +58,58 @@ public sealed class ScriptPlayer : MonoBehaviour
         trailRenderer.sortingLayerName = "Player";
         statePlayer = "MovePlayer";
         CanMove = true;
-    }
-
-    private void Start() 
-    {
-         dashPower = 12f;
-         timeDurationDash = 0.6f;
-         timeCooldownDash = 0.5f;
-         canDash = true;
-         jump = false;
-         isDashing = false;
+        dashPower = 12f;
+        timeDurationDash = 0.6f;
+        timeCooldownDash = 0.5f;
+        canDash = true;
+        jump = false;
+        isDashing = false;
     }
 
     private void Update() {
+
+       
 
         if(isDashing == true) // enquanto o player estiver "dashando" ele vai retornar para a funcao void e nao executara outro comando
         {
             animPlayer.AnimationPlayer("IndioDash");
             return;
         }
-
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
         #region DirectionsPlayer
         directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel para saber a direcao h do player
         directionPlayerY = Input.GetAxisRaw("Vertical"); // variavel para saber a direcao y do player
         #endregion
         #region CollidersPlayer
-        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.15f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
+        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.20f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
         IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask);
         IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask);
         #endregion
         #region ActionPlayer
-        Walk();
-        JumpMovimentEffects();
+        Profiler.BeginSample("ACOES PLAYER");
+        Walk(); 
         JumpInput();
+        JumpMovimentEffects();
+        
+        
         SlidingWall();
+        WallJump();
         
         if(Input.GetKeyDown(KeyCode.Space))
         {
             DashAction();
         }
+        
         #endregion
         #region ConfigActionsPlayer
         
         SoundSettings();
         #endregion
+        Debug.Log(doubleJump);
+        Profiler.EndSample();
        
     }
 
-    private void FixedUpdate()
-    {
-        if(isDashing == true)
-        {
-            statePlayer = "DashPlayer";
-            return;
-        }
-        WallJump();
-        
-        
-    }
     private void SlidingWall()
     {
         if((IsWallRight || IsWallLeft) && directionPlayerH !=0 && !IsGround)
@@ -158,11 +152,11 @@ public sealed class ScriptPlayer : MonoBehaviour
     
     private void Walk()
     {
-        if(directionPlayerH == 0 && IsWallJumping == false)
+        if(directionPlayerH == 0 && IsWallJumping == false && IsGround)
         {
             statePlayer = "ParadoPlayer";
         }
-        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false )
+        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false && IsGround)
         {
              statePlayer = "MovimentoPlayer";
         }
@@ -176,26 +170,29 @@ public sealed class ScriptPlayer : MonoBehaviour
     }
 
     private void JumpAction()
-    {
+    {      //first jump
            audioSource.PlayOneShot(audiosPlayer[4]); // som do pulo
-           rig.velocity = new Vector2(rig.velocity.x,11);
+           rig.velocity = new Vector2(rig.velocity.x,10f);
            jump = false;
+           doubleJump = !doubleJump;
     }
 
     private bool JumpInput()
     {
-        if( IsGroundTimerJumpNormal > 0 && IsGroundTimerJumpCoyote>0)
+
+        if( Input.GetKeyDown(KeyCode.W) && IsGroundTimerJumpCoyote>0)
         {
+            statePlayer = "JumpPlayer";
             jump = true;
             IsGroundTimerJumpCoyote = 0;
-            IsGroundTimerJumpNormal = 0;
-            Debug.Log($"Tempo pular: {IsGroundTimerJumpCoyote}");
+            doubleJump = false;
         }
         
-        if(jump)
+        if(jump || doubleJump == true && Input.GetKeyDown(KeyCode.W))
         {
-            JumpAction();
+                JumpAction();
         }
+
         if(Input.GetKeyDown(KeyCode.W) && IsSliding)
         {
             IsWallJump = true;
@@ -203,6 +200,7 @@ public sealed class ScriptPlayer : MonoBehaviour
             IsWallJumping = true;
             Invoke("StopWallJump",0.2f);  
         }
+
         return jump;
     }
 
@@ -216,9 +214,9 @@ public sealed class ScriptPlayer : MonoBehaviour
     private void JumpMovimentEffects()
     {
         float fallMultiplier = 5f;
-        float lowJumpMultiplier = 4f;
-        const float valueTimerJumpCoyote = 0.15f; // efeito coyote
-        const float valueTimerJumpNormal = 0.15f;
+        float lowJumpMultiplier = 4.5f;
+        const float valueTimerJumpCoyote = 0.2f; // efeito coyote
+        
         
 
         if(rig.velocity.y < 0)
@@ -230,13 +228,20 @@ public sealed class ScriptPlayer : MonoBehaviour
             rig.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         } 
 
-        if(IsGround!=true && IsSliding == false && IsWallJumping == false)
-        {
+         if(IsGround!=true && IsSliding == false && IsWallJumping == false )
+         {
+            
             statePlayer = "JumpPlayer";
-        }
+            
+         }
+         
+         if(doubleJump == true && Input.GetKeyDown(KeyCode.W))
+         {
+            statePlayer = "DoubleJumpPlayer"; 
+         }
         
         #region Coyote/Responsive Jump
-        //Coyote Jump
+        //Coyote Jump 
         if(IsGround)
         {
             IsWallJumping = false;
@@ -245,15 +250,6 @@ public sealed class ScriptPlayer : MonoBehaviour
         else
         {
             IsGroundTimerJumpCoyote-=Time.deltaTime;
-        }
-        //Normal Jump
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            IsGroundTimerJumpNormal = valueTimerJumpNormal;
-        }
-        else
-        {
-            IsGroundTimerJumpNormal-=Time.deltaTime;
         }
         #endregion 
     }
@@ -296,14 +292,14 @@ public sealed class ScriptPlayer : MonoBehaviour
            
         }
 
-         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && IsGround == true  )
+         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && IsGroundTimerJumpCoyote > 0 && IsGround)
          {
             audioSource.clip = audiosPlayer[0];
             audioSource.loop = true;
             audioSource.Play();
             
          }
-         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || IsGround == false )
+         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || IsGroundTimerJumpCoyote <= 0 && !IsGround)
          {
             audioSource.loop = false;
          }
@@ -350,9 +346,9 @@ public sealed class ScriptPlayer : MonoBehaviour
                 animPlayer.AnimationPlayer("IndioSliding");
             break;
 
-            case "WallJumpPlayer":
+            case "DoubleJumpPlayer":
                 
-                animPlayer.AnimationPlayer("WallJumpPlayer");
+                animPlayer.AnimationPlayer("DoubleJumpPlayer");
             break;
 
             default:
@@ -375,7 +371,7 @@ public sealed class ScriptPlayer : MonoBehaviour
         {
             QuantidadeErvasColetadas+=1;
             Destroy(col.gameObject);
-            Debug.Log(QuantidadeErvasColetadas);
+            
             
         }
 
@@ -450,7 +446,7 @@ public sealed class ScriptPlayer : MonoBehaviour
     {
         Gizmos.DrawWireSphere((Vector2)transformArm.position+rightOffSetArm,0.19f);
         Gizmos.DrawWireSphere((Vector2)transformArm.position+leftOffSetArm,0.19f);
-        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.15f));
+        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.20f));
     }
    
     

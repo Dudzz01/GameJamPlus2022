@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class ScriptContador : MonoBehaviour
+public  class ScriptContador : MonoBehaviour
 {
     [SerializeField] private Text textContador;
     [SerializeField] private Transform objectContador;

@@ -11,7 +11,7 @@ public class VerifyScenes : MonoBehaviour
     private void Update() {
         GetNextScene();
     }
-    public virtual string GetNextScene()
+    public virtual  string GetNextScene()
     {
         SceneManager.GetActiveScene();
         if(SceneManager.GetActiveScene().name == "Fase 3")

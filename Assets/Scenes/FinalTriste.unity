@@ -1022,8 +1022,8 @@ MonoBehaviour:
     m_RichText: 0
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 2
-  m_Text: "Voc\xEA n\xE3o conseguiu salvar o Paj\xE9 em \n"
+    m_LineSpacing: 1
+  m_Text: "Voc\xEA n\xE3o conseguiu salvar o Paj\xE9 em\n"
 --- !u!222 &1601096368
 CanvasRenderer:
   m_ObjectHideFlags: 0

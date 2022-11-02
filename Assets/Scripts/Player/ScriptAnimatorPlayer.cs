@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptAnimatorPlayer : MonoBehaviour
+public  class ScriptAnimatorPlayer : MonoBehaviour
 {
     [SerializeField] private Animator animatorPlayer;
 
