@@ -52,11 +52,12 @@ public class ScriptPlayer : MonoBehaviour
     #endregion
     private void Awake() 
     { 
-        rightOffSetArm = new Vector2(0.13f,0);
-        leftOffSetArm = new Vector2(-0.03f,0);
+        //Inicializando Váriaveis
+        rightOffSetArm = new Vector2(0.13f,0);// Offset da posicao do colisor do braco direito do player
+        leftOffSetArm = new Vector2(-0.03f,0);// Offset da posicao do colisor do braco esquerdo do player
         spritePlayer = GetComponent<SpriteRenderer>();
         trailRenderer.sortingLayerName = "Player";
-        statePlayer = "MovePlayer";
+        statePlayer = "MovePlayer"; // Stateplayer é o estado de animacao do player
         CanMove = true;
         dashPower = 12f;
         timeDurationDash = 0.6f;
@@ -81,12 +82,11 @@ public class ScriptPlayer : MonoBehaviour
         directionPlayerY = Input.GetAxisRaw("Vertical"); // variavel para saber a direcao y do player
         #endregion
         #region CollidersPlayer
-        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.20f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask);
-        IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask);
-        IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask);
+        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.20f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask); // verifica se o pé do player está colidindo com o chao
+        IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask); // retornará true se o colisor do braco direito do player estiver colidindo na parede
+        IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask); // retornará true se o colisor do braco esquerdo do player estiver colidindo na parede
         #endregion
         #region ActionPlayer
-        Profiler.BeginSample("ACOES PLAYER");
         Walk(); 
         JumpInput();
         JumpMovimentEffects();
@@ -105,18 +105,17 @@ public class ScriptPlayer : MonoBehaviour
         
         SoundSettings();
         #endregion
-        Debug.Log(doubleJump);
-        Profiler.EndSample();
+        
        
     }
 
     private void SlidingWall()
     {
-        if((IsWallRight || IsWallLeft) && directionPlayerH !=0 && !IsGround)
+        if((IsWallRight && directionPlayerH == 1 || IsWallLeft && directionPlayerH == -1) && !IsGround) // se estiver colidindo com a parede e pressionando o botao de movimento em direcao a parede e se não estiver colidindo com o chao, ele fara o sliding
         {
              statePlayer = "SlidingPlayer";
              IsSliding = true;
-             rig.velocity = new Vector2(rig.velocity.x, -2);
+             rig.velocity = new Vector2(rig.velocity.x, -2); // Deslizando
         }
         else
         {
@@ -125,7 +124,7 @@ public class ScriptPlayer : MonoBehaviour
        
     }
 
-    private void WallJump()
+    private void WallJump() // Método que faz o player pular quando estiver deslizando na parede
     {   
         
         
@@ -135,12 +134,12 @@ public class ScriptPlayer : MonoBehaviour
             if(IsWallRight)
             {
                rig.velocity = new Vector2(-10,10);
-               spritePlayer.flipX = true;
+               spritePlayer.flipX = true; // Váriavel que basicamente inverte a sprite para condizer com o movimento do player
             }
             if(IsWallLeft)
             {
                 rig.velocity = new Vector2(10,10);
-                spritePlayer.flipX = false;
+                spritePlayer.flipX = false; 
                 
             }
             statePlayer = "JumpPlayer";
@@ -152,11 +151,11 @@ public class ScriptPlayer : MonoBehaviour
     
     private void Walk()
     {
-        if(directionPlayerH == 0 && IsWallJumping == false && IsGround)
+        if(directionPlayerH == 0 && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja parado
         {
             statePlayer = "ParadoPlayer";
         }
-        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false && IsGround)
+        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja andando
         {
              statePlayer = "MovimentoPlayer";
         }
@@ -180,7 +179,7 @@ public class ScriptPlayer : MonoBehaviour
     private bool JumpInput()
     {
 
-        if( Input.GetKeyDown(KeyCode.W) && IsGroundTimerJumpCoyote>0)
+        if( Input.GetKeyDown(KeyCode.W) && IsGroundTimerJumpCoyote>0) // Se apertar W e colidir com o chao... 
         {
             statePlayer = "JumpPlayer";
             jump = true;
@@ -188,17 +187,17 @@ public class ScriptPlayer : MonoBehaviour
             doubleJump = false;
         }
         
-        if(jump || doubleJump == true && Input.GetKeyDown(KeyCode.W))
+        if(jump || doubleJump == true && Input.GetKeyDown(KeyCode.W)) //Se cumprir essa condicao, a acao do pulo é executada
         {
                 JumpAction();
         }
 
-        if(Input.GetKeyDown(KeyCode.W) && IsSliding)
+        if(Input.GetKeyDown(KeyCode.W) && IsSliding) // Se estiver deslizando na parede e usa o W para pular, o Wall Jump funcionará
         {
             IsWallJump = true;
             CanMove = false;
             IsWallJumping = true;
-            Invoke("StopWallJump",0.2f);  
+            Invoke("StopWallJump",0.2f);  //Em 0.2 segundos, o metodo StopWallJump é invocado
         }
 
         return jump;
@@ -213,31 +212,31 @@ public class ScriptPlayer : MonoBehaviour
 
     private void JumpMovimentEffects()
     {
-        float fallMultiplier = 5f;
-        float lowJumpMultiplier = 4.5f;
+        float fallMultiplier = 5f; //variavel que faz o player cair mais rapido
+        float lowJumpMultiplier = 4.5f; //variavel que faz o player subir mais "lento"
         const float valueTimerJumpCoyote = 0.2f; // efeito coyote
         
         
 
         if(rig.velocity.y < 0)
         {
-            rig.velocity+= Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+            rig.velocity+= Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.deltaTime; // se o player estiver caindo, será somado a velocidade dele um valor através dessa formula aritmetica para cair mais rapido
         }
         else if(rig.velocity.y>0 && !Input.GetKey(KeyCode.W))
         {
-            rig.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
+            rig.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime; // se o player estiver subindo, será somado a velocidade dele um valor através dessa formula aritmetica para subir mais "devagar"
         } 
 
          if(IsGround!=true && IsSliding == false && IsWallJumping == false )
          {
             
-            statePlayer = "JumpPlayer";
+            statePlayer = "JumpPlayer"; // animacao de jump
             
          }
          
          if(doubleJump == true && Input.GetKeyDown(KeyCode.W))
          {
-            statePlayer = "DoubleJumpPlayer"; 
+            statePlayer = "DoubleJumpPlayer"; // animacao de double jump
          }
         
         #region Coyote/Responsive Jump
@@ -245,11 +244,11 @@ public class ScriptPlayer : MonoBehaviour
         if(IsGround)
         {
             IsWallJumping = false;
-            IsGroundTimerJumpCoyote = valueTimerJumpCoyote;
+            IsGroundTimerJumpCoyote = valueTimerJumpCoyote; // se o player estiver colidindo com o chao, a variavel recebe 0.2f
         }
         else
         {
-            IsGroundTimerJumpCoyote-=Time.deltaTime;
+            IsGroundTimerJumpCoyote-=Time.deltaTime; // se o player nao estiver colidindo com o chao, a variavel ficará diminuindo até 0, logo o player consegue pular mesmo no ar com a condicao dessa variavel ser maior que 0 (Efeito Coyote)
         }
         #endregion 
     }
@@ -258,8 +257,8 @@ public class ScriptPlayer : MonoBehaviour
     {
         if(canDash == true)
         {
-            audioSource.PlayOneShot(audiosPlayer[5]);
-            StartCoroutine(Dash());
+            audioSource.PlayOneShot(audiosPlayer[5]); // som do dash
+            StartCoroutine(Dash()); //inicializando coroutine do dash
         }
     }
 
@@ -344,6 +343,7 @@ public class ScriptPlayer : MonoBehaviour
             case "SlidingPlayer":
                 
                 animPlayer.AnimationPlayer("IndioSliding");
+                
             break;
 
             case "DoubleJumpPlayer":
