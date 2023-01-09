@@ -34,6 +34,7 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField]private LayerMask objectsGroundMask;
     [SerializeField]private Transform transformFeet;
     [SerializeField]private Transform transformArm;
+    [SerializeField]private float powerJump;
     private Vector2 rightOffSetArm;
     private Vector2 leftOffSetArm;
     private bool jump;
@@ -171,7 +172,7 @@ public class ScriptPlayer : MonoBehaviour
     private void JumpAction()
     {      //first jump
            audioSource.PlayOneShot(audiosPlayer[4]); // som do pulo
-           rig.velocity = new Vector2(rig.velocity.x,10f);
+           rig.velocity = new Vector2(rig.velocity.x,powerJump);
            jump = false;
            doubleJump = !doubleJump;
     }
@@ -304,6 +305,8 @@ public class ScriptPlayer : MonoBehaviour
          }
         
     }
+
+
 
    public void PlayerAnimMoviment(string stateAnim)
    {    
