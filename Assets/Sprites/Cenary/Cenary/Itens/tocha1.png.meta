@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 029c829eddde7fd45bc2b39bf28a8d85
+guid: 06e3bd41dcf5b1248ba8d03ac463e0e5
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -80,12 +80,12 @@ TextureImporter:
     buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
-    textureFormat: 74
+    textureFormat: -1
     textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
-    overridden: 1
+    overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -164,10 +164,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: oca 1_0
+      name: tocha1_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 0
         y: 48
         width: 16
         height: 16
@@ -178,38 +178,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e20553d34ffae6499deb613538432dd
-      internalID: 1528104185
+      spriteID: f57e5760e4bc32344ab83306d13a2006
+      internalID: 437525796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oca 1_1
+      name: tocha1_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: baef8de948f1c0449a84a87b92e9ea4b
-      internalID: 1467192039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_2
-      rect:
-        serializedVersion: 2
-        x: 16
+        x: 0
         y: 32
         width: 16
         height: 16
@@ -220,35 +199,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6444cddd07857c74fbf240b0adf0193c
-      internalID: -561180705
+      spriteID: d6c3d0cfbfea3174a94df969c811ba36
+      internalID: -2110075620
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oca 1_3
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 32
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 911fd4c41a43a5a4d83c45fefc80caca
-      internalID: 691824266
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_4
+      name: tocha1_2
       rect:
         serializedVersion: 2
         x: 0
@@ -262,77 +220,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c57b67d897228ba4b860013accc599da
-      internalID: -228341282
+      spriteID: aa16080ce376374429de7d26ff5b2d53
+      internalID: 1981985177
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: oca 1_5
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 283232a2736f2ec4686775dc5eaa5edd
-      internalID: 560871398
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_6
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a22ea470e7aed894eb31d64db8e5a402
-      internalID: 498249057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_7
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 16
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c44d10e2a506ad24d9ce90fdf2c90099
-      internalID: 574276760
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_8
+      name: tocha1_3
       rect:
         serializedVersion: 2
         x: 0
@@ -346,71 +241,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fddd877d59b917479c3f15ae057f9ab
-      internalID: 235163853
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_9
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6c0f906da1e697c49a23bfd0594cce6c
-      internalID: -1887241508
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_10
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7734d317d6aa54f49a5328188094194a
-      internalID: 1013474259
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: oca 1_11
-      rect:
-        serializedVersion: 2
-        x: 48
-        y: 0
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bcc928e65648fea49a99a43ffe95ec83
-      internalID: 1628786912
+      spriteID: d438c74016314184f8e41624e52bddeb
+      internalID: -1237641371
       vertices: []
       indices: 
       edges: []
@@ -426,18 +258,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      oca 1_10: 1013474259
-      oca 1_3: 691824266
-      oca 1_8: 235163853
-      oca 1_9: -1887241508
-      oca 1_4: -228341282
-      oca 1_1: 1467192039
-      oca 1_5: 560871398
-      oca 1_7: 574276760
-      oca 1_2: -561180705
-      oca 1_6: 498249057
-      oca 1_0: 1528104185
-      oca 1_11: 1628786912
+      tocha1_2: 1981985177
+      tocha1_0: 437525796
+      tocha1_1: -2110075620
+      tocha1_3: -1237641371
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -179,6 +179,7 @@ MonoBehaviour:
     m_Bits: 256
   transformFeet: {fileID: 1014075821894235257}
   transformArm: {fileID: 7175105390032852509}
+  powerJump: 0
 --- !u!95 &1014075820789292354
 Animator:
   serializedVersion: 4
