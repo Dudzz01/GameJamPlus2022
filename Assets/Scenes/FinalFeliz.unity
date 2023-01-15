@@ -284,10 +284,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelLoader
       objectReference: {fileID: 0}
-    - target: {fileID: 7395104341779349666, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7395104341779349667, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -722,7 +718,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448145898
 GameObject:
@@ -875,10 +871,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ConfigCenario
       objectReference: {fileID: 0}
-    - target: {fileID: 7063584399271699751, guid: a98fb6c1e93d0f243a452083e7390fd8, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a98fb6c1e93d0f243a452083e7390fd8, type: 3}
 --- !u!1001 &1590463505
@@ -895,10 +887,6 @@ PrefabInstance:
     - target: {fileID: -4916970476881006088, guid: 3423fb6a50775f244950343d960e8ff1, type: 3}
       propertyPath: m_SortingLayerID
       value: 150809373
-      objectReference: {fileID: 0}
-    - target: {fileID: 1465863199498266394, guid: 3423fb6a50775f244950343d960e8ff1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4694838028638315604, guid: 3423fb6a50775f244950343d960e8ff1, type: 3}
       propertyPath: m_Name
