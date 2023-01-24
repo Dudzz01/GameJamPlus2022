@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1e3c139056f285a4bac80ea08937541f
+guid: 3cecfe8703e813d4d85053479aef79a7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -102,91 +102,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: terra0
-      rect:
-        serializedVersion: 2
-        x: 4
-        y: 24
-        width: 16
-        height: 16
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 38d6912bd895a64419ea96ac34bb571b
-      internalID: 422145620
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: terra1
-      rect:
-        serializedVersion: 2
-        x: 20
-        y: 24
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: be071f2bd0365b84f9aa6b57aff9d8cc
-      internalID: -294411429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: plantinha1
-      rect:
-        serializedVersion: 2
-        x: 74
-        y: 64
-        width: 6
-        height: 5
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4461072ea911734186dcd4ab3f0e76c
-      internalID: -2003695074
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Atlas2_0
-      rect:
-        serializedVersion: 2
-        x: 75
-        y: 25
-        width: 13
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e0444d517c347f54b941374cbdad43b3
-      internalID: 688453813
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -197,11 +113,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      terra0: 422145620
-      Atlas2_0: 688453813
-      terra1: -294411429
-      plantinha1: -2003695074
+    nameFileIdTable: {}
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
