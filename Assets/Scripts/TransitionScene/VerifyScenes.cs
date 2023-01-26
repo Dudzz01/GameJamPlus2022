@@ -4,39 +4,42 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class VerifyScenes : MonoBehaviour
 {
-    [SerializeField] protected string nameNextScene;
-    
-    
+    [SerializeField] private string nameNextScene;
 
-    private void Update() {
-        GetNextScene();
-    }
-    public virtual  string GetNextScene()
+    [SerializeField]private GameObject gameOverObject;
+
+    [SerializeField]private GameObject playerInScene;
+    public static bool gameOverActive = false;
+
+    private void Update() 
     {
-        SceneManager.GetActiveScene();
-        if(SceneManager.GetActiveScene().name == "Fase 3")
-        {
-            if(ScriptContador.ContadorTempoJogo <60 && ScriptPlayer.QuantidadeErvasColetadas==3)
-            {
-                
-                nameNextScene = "FinalFeliz";
-            }
-            else
-            {
-                nameNextScene = "FinalTriste";
-            }
+        GetCurrentScene();
 
-            
-        
+        if(gameOverActive == true)
+        {
+            Destroy(playerInScene);
+            gameOverObject.SetActive(true);
         }
-        
-        return nameNextScene;
+    }
+
+    public static string GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.tag == "Player")
+        if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true)
         {
+            Debug.Log("Player colidiu");
+            ScriptPlayer.QuantidadeErvasColetadas = 0;
             SceneManager.LoadScene(nameNextScene);
+            
+            //O player venceu
+        }
+        else if(col.gameObject.tag == "Player")
+        {
+            //O player perdeu
+            gameOverActive = true;
         }
     }
 }

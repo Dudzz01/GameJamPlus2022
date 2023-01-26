@@ -7,34 +7,35 @@ public  class ScriptContador : MonoBehaviour
 {
     [SerializeField] private Text textContador;
     [SerializeField] private Transform objectContador;
-    public static float ContadorTempoJogo{get; set;}
+    [SerializeField] private float TempoLimiteFase; // Limite de tempo que uma fase pode ser concluida( ex:essa fase pode ser concluida no maximo em 60 segundos se não voce perde)
+    private float ContadorTempoDuranteJogo{get; set;} // Tempo de decorrer do jogo
+    public static bool ConcluiuTempoDaFase{get; set;}
 
     private void Start() {
-        ContadorTempoJogo = 0;
+        ContadorTempoDuranteJogo = 0;
     }
 
 
     private void Update() {
-        ContadorTempoJogo+=Time.deltaTime;
-        textContador.text = ContadorTempoJogo.ToString("F2");
+
+        if(VerifyScenes.gameOverActive != true) // se não for gameover, o tempo do jogo continuará sendo contado
+        {
+            ContadorTempoDuranteJogo+=Time.deltaTime;
+        }
+
         
-         DontDestroyOnLoad(this.transform.root.gameObject);
-         DontDestroyOnLoad(this.objectContador.root.gameObject);
-         
-         
-         DestroySystemContador();//So acontecera na fase final ou menu
-    
-        //Debug.Log(contadorTempoJogo);
+        textContador.text = ContadorTempoDuranteJogo.ToString("F2");
+
+
+        if(ContadorTempoDuranteJogo>TempoLimiteFase)
+        {
+            ConcluiuTempoDaFase = false;
+        }
+        else
+        {
+            ConcluiuTempoDaFase = true;
+        }
+        
     }
 
-    public void DestroySystemContador()
-    {
-         if(SceneManager.GetActiveScene().name == "FinalFeliz" || SceneManager.GetActiveScene().name == "FinalTriste" || SceneManager.GetActiveScene().name == "Menu")
-         {
-             Destroy(this.gameObject);
-             Destroy(this.objectContador.gameObject);
-           //  Destroy(this.objectsContador[1]);
-         }
-        
-    }
 }

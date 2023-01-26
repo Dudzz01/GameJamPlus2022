@@ -380,14 +380,14 @@ public class ScriptPlayer : MonoBehaviour
 
         if(col.gameObject.tag == "Espinho")
         {
-            this.transform.position = ManageSpawn.SpawnPointAtual().transform.position;
+            VerifyScenes.gameOverActive = true;
             audioSource.PlayOneShot(audiosPlayer[2]);
             StartCoroutine(TrailRendActive());
         }
 
         if(col.gameObject.tag == "Serra")
         {
-            this.transform.position = ManageSpawn.SpawnPointAtual().transform.position;
+            VerifyScenes.gameOverActive = true;
             audioSource.PlayOneShot(audiosPlayer[2]);
             StartCoroutine(TrailRendActive());
         }
@@ -396,7 +396,7 @@ public class ScriptPlayer : MonoBehaviour
         {
             Text texto = textFinal.gameObject.GetComponent<Text>();
             texto.enabled = true;
-            texto.text+=ScriptContador.ContadorTempoJogo.ToString("F2");
+            //texto.text+=ScriptContador.ContadorTempoDuranteJogo.ToString("F2");
             Destroy(col.gameObject);
             StartCoroutine(GoMenu());
         }
