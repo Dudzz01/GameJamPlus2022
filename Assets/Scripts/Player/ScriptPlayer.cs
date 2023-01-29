@@ -385,6 +385,12 @@ public class ScriptPlayer : MonoBehaviour
             StartCoroutine(TrailRendActive());
         }
 
+        if(col.gameObject.tag == "Enemy")
+        {
+            VerifyScenes.gameOverActive = true;
+            
+        }
+
         if(col.gameObject.tag == "Serra")
         {
             VerifyScenes.gameOverActive = true;

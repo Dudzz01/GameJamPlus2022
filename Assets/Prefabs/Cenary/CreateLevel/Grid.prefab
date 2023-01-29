@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3636696119874171043}
   m_Layer: 0
   m_Name: Foreground Pos
-  m_TagString: Untagged
+  m_TagString: Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -151,7 +151,7 @@ GameObject:
   - component: {fileID: 7029597655168763798}
   m_Layer: 6
   m_Name: Foreground Low
-  m_TagString: Untagged
+  m_TagString: Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 1888835362305893644}
   m_Layer: 6
   m_Name: 'Foreground '
-  m_TagString: Untagged
+  m_TagString: Tilemap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

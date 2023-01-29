@@ -13,6 +13,9 @@ TagManager:
   - TeleportScene
   - Erva
   - Paje
+  - Bullet
+  - Enemy
+  - Tilemap
   layers:
   - Default
   - TransparentFX
