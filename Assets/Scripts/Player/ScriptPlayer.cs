@@ -10,6 +10,7 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private TrailRenderer trailRenderer;
     [SerializeField] private ManageSpawnPoints ManageSpawn;
     [SerializeField] private GameObject textFinal;
+    [SerializeField] private GameObject bulletPlayer;
     public static int QuantidadeErvasColetadas {get; set;}
     #region SoundsPlayerVariables
     [SerializeField] private AudioSource audioSource;
@@ -106,7 +107,7 @@ public class ScriptPlayer : MonoBehaviour
         
         SoundSettings();
         #endregion
-        
+        ShootAction();
        
     }
 
@@ -175,6 +176,23 @@ public class ScriptPlayer : MonoBehaviour
            rig.velocity = new Vector2(rig.velocity.x,powerJump);
            jump = false;
            doubleJump = !doubleJump;
+    }
+
+    private void ShootAction()
+    {
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            GameObject bulletP = Instantiate(bulletPlayer, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
+
+                if(spritePlayer.flipX == true)
+                {
+                    bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = -1; // caso o player esteja olhando pra esquerda, a direcao do tiro será para a esquerda
+                    return;
+                }
+
+                    bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = 1; // caso o player esteja olhando pra direita, a direcao do tiro será para a direita        
+        }
+            
     }
 
     private bool JumpInput()

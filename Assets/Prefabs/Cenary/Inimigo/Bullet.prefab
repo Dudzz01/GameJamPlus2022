@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 280979998767970908}
-  - component: {fileID: 6298693400110381477}
+  - component: {fileID: 8838894815968359405}
   - component: {fileID: 3818309508424088604}
   - component: {fileID: 7215618882287594486}
   - component: {fileID: -1746650702217514279}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Bullet
+  m_TagString: BulletEnemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6298693400110381477
+--- !u!114 &8838894815968359405
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44,11 +44,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1670211491295880976}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65e35a8505bca6447aa68ea712c2ed43, type: 3}
+  m_Script: {fileID: 11500000, guid: 0342c473e7e9c7347bc456c17b09e4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rigBullet: {fileID: -1746650702217514279}
-  dirBullet: -1
 --- !u!61 &3818309508424088604
 BoxCollider2D:
   m_ObjectHideFlags: 0

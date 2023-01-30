@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptBullet : MonoBehaviour
+public class ScriptBulletEnemy : MonoBehaviour
 {
-    [SerializeField] private Rigidbody2D rigBullet;
+    [SerializeField] protected Rigidbody2D rigBullet;
     [SerializeField] public int DirBullet{get; set;}
     
     private void Start() {
@@ -16,7 +16,7 @@ public class ScriptBullet : MonoBehaviour
         MovimentOfBullet();
     }
 
-    public void MovimentOfBullet()
+    public virtual void MovimentOfBullet()
     {
         float speedOfBulletX = 5;
 
@@ -24,7 +24,7 @@ public class ScriptBullet : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D col)
+    public virtual void OnCollisionEnter2D(Collision2D col)
     {
         if(col.gameObject.tag == "Player")
         {
