@@ -49,8 +49,12 @@ public class ScriptPlayer : MonoBehaviour
     public float timeCooldownDash {get; private set;} // tempo de cooldown do dash
     #endregion
     #region MovimentPlayerVariables
+
     public float directionPlayerH{get; private set;} // direcao horizontal do player
     public float directionPlayerY{get; private set;} // direcao horizontal do player
+    #endregion
+    #region ActionPermissionVariables
+    [SerializeField] private bool[] arrayOfActionPermissionOfPlayer = new bool[4];
     #endregion
     private void Awake() 
     { 
@@ -67,6 +71,7 @@ public class ScriptPlayer : MonoBehaviour
         canDash = true;
         jump = false;
         isDashing = false;
+        
     }
 
     private void Update() {
@@ -84,30 +89,31 @@ public class ScriptPlayer : MonoBehaviour
         directionPlayerY = Input.GetAxisRaw("Vertical"); // variavel para saber a direcao y do player
         #endregion
         #region CollidersPlayer
-        IsGround = Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.20f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask); // verifica se o pé do player está colidindo com o chao
+        IsGround = Physics2D.OverlapBox((Vector2)transformFeet.position ,new Vector2(0.25f,0.20f),0,groundMask) || Physics2D.OverlapBox(transformFeet.position,new Vector2(0.25f,0.24f),0,objectsGroundMask); // verifica se o pé do player está colidindo com o chao
         IsWallRight = Physics2D.OverlapCircle((Vector2)transformArm.position+rightOffSetArm,0.19f,groundMask); // retornará true se o colisor do braco direito do player estiver colidindo na parede
         IsWallLeft = Physics2D.OverlapCircle((Vector2)transformArm.position+leftOffSetArm,0.19f,groundMask); // retornará true se o colisor do braco esquerdo do player estiver colidindo na parede
         #endregion
         #region ActionPlayer
-        Walk(); 
-        JumpInput();
-        JumpMovimentEffects();
+        // Walk(); 
+        // JumpInput();
+        // JumpMovimentEffects(); //double jump = 0;
         
+        // ShootAction();// shooting = 3;
+        // SlidingWall();// wall jump = 1;
+        // WallJump();//wall jump = 1;
         
-        SlidingWall();
-        WallJump();
+        // if(Input.GetKeyDown(KeyCode.Space))
+        // {
+        //     DashAction(); // dash = 2;
+        // }
         
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            DashAction();
-        }
-        
+        ManageAllActionsOfPlayer();
         #endregion
         #region ConfigActionsPlayer
         
         SoundSettings();
         #endregion
-        ShootAction();
+        
        
     }
 
@@ -175,7 +181,12 @@ public class ScriptPlayer : MonoBehaviour
            audioSource.PlayOneShot(audiosPlayer[4]); // som do pulo
            rig.velocity = new Vector2(rig.velocity.x,powerJump);
            jump = false;
-           doubleJump = !doubleJump;
+
+           if(arrayOfActionPermissionOfPlayer[0] == true) // se o double jump estiver habilitado
+           {
+                doubleJump = !doubleJump;
+           }
+           
     }
 
     private void ShootAction()
@@ -205,6 +216,8 @@ public class ScriptPlayer : MonoBehaviour
             IsGroundTimerJumpCoyote = 0;
             doubleJump = false;
         }
+
+        
         
         if(jump || doubleJump == true && Input.GetKeyDown(KeyCode.W)) //Se cumprir essa condicao, a acao do pulo é executada
         {
@@ -227,13 +240,14 @@ public class ScriptPlayer : MonoBehaviour
         IsWallJump = false;
         CanMove = true;
     }
+    
 
 
     private void JumpMovimentEffects()
     {
         float fallMultiplier = 5f; //variavel que faz o player cair mais rapido
         float lowJumpMultiplier = 4.5f; //variavel que faz o player subir mais "lento"
-        const float valueTimerJumpCoyote = 0.2f; // efeito coyote
+        const float valueTimerJumpCoyote = 0.15f; // efeito coyote
         
         
 
@@ -260,14 +274,19 @@ public class ScriptPlayer : MonoBehaviour
         
         #region Coyote/Responsive Jump
         //Coyote Jump 
+
+        
         if(IsGround)
         {
+            
             IsWallJumping = false;
             IsGroundTimerJumpCoyote = valueTimerJumpCoyote; // se o player estiver colidindo com o chao, a variavel recebe 0.2f
+            
         }
         else
         {
             IsGroundTimerJumpCoyote-=Time.deltaTime; // se o player nao estiver colidindo com o chao, a variavel ficará diminuindo até 0, logo o player consegue pular mesmo no ar com a condicao dessa variavel ser maior que 0 (Efeito Coyote)
+           
         }
         #endregion 
     }
@@ -299,6 +318,36 @@ public class ScriptPlayer : MonoBehaviour
      }
       
         return;
+    }
+
+    public void ManageAllActionsOfPlayer()
+    {
+        Walk(); 
+
+        JumpMovimentEffects();// condicao será feita dentro do método
+        JumpInput();
+        
+
+        if(arrayOfActionPermissionOfPlayer[1] == true)
+        {
+            SlidingWall();
+            WallJump();
+        }
+        
+        if(arrayOfActionPermissionOfPlayer[2] == true)
+        {
+            if(Input.GetKeyDown(KeyCode.Space))
+            {
+                DashAction(); // dash = 2;
+            }
+        }
+        
+        if(arrayOfActionPermissionOfPlayer[3] == true)
+        {
+            ShootAction();// shooting = 3;
+        }
+
+        
     }
 
 
@@ -473,7 +522,7 @@ public class ScriptPlayer : MonoBehaviour
     {
         Gizmos.DrawWireSphere((Vector2)transformArm.position+rightOffSetArm,0.19f);
         Gizmos.DrawWireSphere((Vector2)transformArm.position+leftOffSetArm,0.19f);
-        Gizmos.DrawWireCube(transformFeet.position,new Vector2(0.25f,0.20f));
+        Gizmos.DrawWireCube((Vector2)transformFeet.position,new Vector2(0.25f,0.20f));
     }
    
     
