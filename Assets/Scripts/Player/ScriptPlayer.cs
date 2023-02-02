@@ -74,6 +74,8 @@ public class ScriptPlayer : MonoBehaviour
         
     }
 
+    
+
     private void Update() {
 
        
@@ -348,6 +350,11 @@ public class ScriptPlayer : MonoBehaviour
         }
 
         
+    }
+
+    public bool[] GetArrayOfActionPermissionPlayer()
+    {
+        return arrayOfActionPermissionOfPlayer;
     }
 
 

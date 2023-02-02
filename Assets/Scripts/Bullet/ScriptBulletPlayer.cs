@@ -30,4 +30,24 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
             Destroy(gameObject);
         }
     }
+
+    public void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Enemy")
+        {
+            Destroy(col.gameObject);
+        }
+
+        if(col.gameObject.tag == "BulletEnemy")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Tilemap")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    
 }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6461442920152992482}
   - component: {fileID: -3164481087777774027}
   - component: {fileID: -5015922272889700613}
+  - component: {fileID: 8247215194386530702}
   m_Layer: 0
   m_Name: Ervas
   m_TagString: Erva
@@ -111,3 +112,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.57368463, y: 0.452015}
   m_EdgeRadius: 0
+--- !u!114 &8247215194386530702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7118814467522716366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ed5ea67f17c8b94ab4198b7c1dcc3f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOfScene: {fileID: 0}

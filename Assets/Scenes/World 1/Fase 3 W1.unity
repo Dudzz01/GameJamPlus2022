@@ -2084,6 +2084,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ervas
       objectReference: {fileID: 0}
+    - target: {fileID: 8247215194386530702, guid: 323215adf79265c43abb5c209db1a0db, type: 3}
+      propertyPath: playerOfScene
+      value: 
+      objectReference: {fileID: 645687472}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323215adf79265c43abb5c209db1a0db, type: 3}
 --- !u!4 &825166053 stripped

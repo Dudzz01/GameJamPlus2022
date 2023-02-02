@@ -9477,6 +9477,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ervas
       objectReference: {fileID: 0}
+    - target: {fileID: 8247215194386530702, guid: 323215adf79265c43abb5c209db1a0db, type: 3}
+      propertyPath: playerOfScene
+      value: 
+      objectReference: {fileID: 2000931802}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 323215adf79265c43abb5c209db1a0db, type: 3}
 --- !u!1 &797975409
@@ -10537,6 +10541,10 @@ PrefabInstance:
       propertyPath: powerJump
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1014075820789292352, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: arrayOfActionPermissionOfPlayer.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1014075820789292382, guid: 0709f319720801341bfa3d047d966742, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
@@ -10591,6 +10599,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0709f319720801341bfa3d047d966742, type: 3}
+--- !u!1 &2000931802 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1014075820789292379, guid: 0709f319720801341bfa3d047d966742, type: 3}
+  m_PrefabInstance: {fileID: 2000931801}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2107175373
 PrefabInstance:
   m_ObjectHideFlags: 0

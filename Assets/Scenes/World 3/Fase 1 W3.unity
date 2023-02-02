@@ -5997,6 +5997,18 @@ PrefabInstance:
       propertyPath: powerJump
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 1014075820789292352, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: arrayOfActionPermissionOfPlayer.Array.data[0]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014075820789292352, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: arrayOfActionPermissionOfPlayer.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1014075820789292352, guid: 0709f319720801341bfa3d047d966742, type: 3}
+      propertyPath: arrayOfActionPermissionOfPlayer.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1014075820789292382, guid: 0709f319720801341bfa3d047d966742, type: 3}
       propertyPath: m_CollisionDetection
       value: 1
