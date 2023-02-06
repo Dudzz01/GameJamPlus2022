@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ground
+  - Background
+  - Foreground
+  - PulaPula
+  - Espinho
+  - Serra
+  - TeleportScene
+  - Erva
+  - Paje
+  - Enemy
+  - Tilemap
+  - BulletPlayer
+  - BulletEnemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Chao
+  - Transition
+  - ObjetosChao
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 150809373
+    locked: 0
+  - name: TileCenario
+    uniqueID: 2695375157
+    locked: 0
+  - name: Player
+    uniqueID: 935950807
+    locked: 0
+  - name: Transition
+    uniqueID: 3213076949
+    locked: 0
