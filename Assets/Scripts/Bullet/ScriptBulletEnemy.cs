@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScriptBulletEnemy : MonoBehaviour
 {
-    [SerializeField] protected Rigidbody2D rigBullet;
+    [SerializeField] protected Rigidbody2D rigBullet; //bullet
     [SerializeField] public int DirBullet{get; set;}
     
     private void Start() {
@@ -33,7 +33,7 @@ public class ScriptBulletEnemy : MonoBehaviour
 
         if(col.gameObject.tag == "Tilemap")
         {
-            Destroy(gameObject);
+            Destroy(gameObject); 
         }
     }
 }
