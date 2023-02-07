@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu.unity
+    path: Assets/Scenes/CENAS DO MENU/Menu/Menu FAKE.unity
     guid: fff5de7294b6ca04da34be1bd30047ec
   - enabled: 0
     path: Assets/Scenes/Mundo 1/Fase 1.unity
@@ -65,4 +65,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World 3/Fase 5 W3.unity
     guid: 06d770bd99f9f394bbb0b138fe2ce541
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/Escolher Mundos.unity
+    guid: a037bea084b88d0409cc69b6b969f919
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Mundo 1 Menu.unity
+    guid: c37e112edfe8e1d47af62d78c66db3c4
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 2 MENU/Mundo 2 Menu.unity
+    guid: 4d97d26f35c0faa4e8bc97256420a3ee
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 3 MENU/Mundo 3 Menu.unity
+    guid: 3c24a85b32a02d5419a6873623281ec7
   m_configObjects: {}

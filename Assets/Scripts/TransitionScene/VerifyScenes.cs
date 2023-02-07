@@ -13,7 +13,8 @@ public class VerifyScenes : MonoBehaviour
 
     private void Update() 
     {
-        GetCurrentScene();
+        
+        Debug.Log(GetCurrentScene());
 
         if(gameOverActive == true)
         {
