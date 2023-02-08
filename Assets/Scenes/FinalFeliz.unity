@@ -139,6 +139,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BackGround
       objectReference: {fileID: 0}
+    - target: {fileID: 3394500251270996266, guid: 91ec18d9c2d7bf248866b80611ee8f68, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3972027236375374914, guid: 91ec18d9c2d7bf248866b80611ee8f68, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -266,8 +270,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 352417539}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.37, y: -3.1933, z: 0}
-  m_LocalScale: {x: 2.6067, y: 2.6067, z: 2.6067}
+  m_LocalPosition: {x: 0.35, y: -3.69, z: 0}
+  m_LocalScale: {x: 0.34408438, y: 0.34408438, z: 0.34408438}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -283,6 +287,10 @@ PrefabInstance:
     - target: {fileID: 7395104341779349666, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_Name
       value: LevelLoader
+      objectReference: {fileID: 0}
+    - target: {fileID: 7395104341779349666, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7395104341779349667, guid: 0d8d4fb446eac4a4384155a9dfabd6ec, type: 3}
       propertyPath: m_RootOrder
@@ -500,7 +508,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1599592139
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_Sprite: {fileID: 21300000, guid: bbc8bf01a7fbc5d42959131ff1b3cb3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -609,7 +617,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1599592139
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -100
   m_Sprite: {fileID: 1528104185, guid: 029c829eddde7fd45bc2b39bf28a8d85, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -718,7 +726,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1448145898
 GameObject:
@@ -807,7 +815,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 2
-  m_Text: "Voc\xEA conseguiu salvar o Paj\xE9 em \n"
+  m_Text: "Voc\xEA conseguiu salvar o Paj\xE9!!\nParab\xE9ns por concluir sua miss\xE3o!"
 --- !u!222 &1448145902
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -870,6 +878,10 @@ PrefabInstance:
     - target: {fileID: 7063584399271699751, guid: a98fb6c1e93d0f243a452083e7390fd8, type: 3}
       propertyPath: m_Name
       value: ConfigCenario
+      objectReference: {fileID: 0}
+    - target: {fileID: 7063584399271699751, guid: a98fb6c1e93d0f243a452083e7390fd8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a98fb6c1e93d0f243a452083e7390fd8, type: 3}
@@ -988,6 +1000,10 @@ PrefabInstance:
     - target: {fileID: 727463371601452200, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2040497854409668428, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6483314935765292661, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Size.x
@@ -5396,6 +5412,10 @@ PrefabInstance:
     - target: {fileID: 8247046541040370414, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
       propertyPath: m_Name
       value: Grid
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247046541040370414, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97bfe85e9f3605048bf19b21aa9abc45, type: 3}

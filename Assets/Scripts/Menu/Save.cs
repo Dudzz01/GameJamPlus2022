@@ -5,5 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public class Save
 {
-    public bool[] arrayFasesDesbloqueadas = new bool[15];
+    public int numeroDeFases;
+    public bool[] arrayFasesDesbloqueadas = new bool[14];
 }

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: -1778042654078031786}
   - component: {fileID: -6746045055584867887}
   - component: {fileID: 3981250122609635388}
+  - component: {fileID: 8873859934213675129}
   m_Layer: 0
   m_Name: "CondicaoVit\xF3riaFase"
   m_TagString: Untagged
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nameNextScene: Fase 2 W1
+  gameOverObject: {fileID: 0}
+  playerInScene: {fileID: 0}
 --- !u!212 &-6746045055584867887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -125,3 +128,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9799428}
   m_EdgeRadius: 0
+--- !u!114 &8873859934213675129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3892946202641928632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b18932e53261db46b411e7113e956b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
