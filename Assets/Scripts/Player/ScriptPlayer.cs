@@ -59,6 +59,7 @@ public class ScriptPlayer : MonoBehaviour
     private void Awake() 
     { 
         //Inicializando Váriaveis
+        
         rightOffSetArm = new Vector2(0.13f,0);// Offset da posicao do colisor do braco direito do player
         leftOffSetArm = new Vector2(-0.03f,0);// Offset da posicao do colisor do braco esquerdo do player
         spritePlayer = GetComponent<SpriteRenderer>();
@@ -518,7 +519,7 @@ public class ScriptPlayer : MonoBehaviour
    private IEnumerator GoMenu()
    {
      yield return new WaitForSeconds(3.5f);
-     SceneManager.LoadScene("Menu");
+     SceneManager.LoadScene("Menu Original");
      yield return new WaitForSeconds(0);
    }
 

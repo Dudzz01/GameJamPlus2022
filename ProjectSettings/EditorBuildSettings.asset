@@ -17,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Mundo 1/Fase 3.unity
     guid: cfd2dd93f768ec343a0418bab3ad7500
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/FinalFeliz.unity
     guid: a27469374bc4f2148bb184f04434c787
   - enabled: 0
@@ -29,6 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World 1/Fase 2 W1.unity
     guid: f4913d3d0a561f643b5dc37a9b93d2e9
+  - enabled: 1
+    path: Assets/Scenes/World 1/Fase 3 W1.unity
+    guid: 7e77f53c1b6197c4d9c64fe5b3d9cc55
   - enabled: 1
     path: Assets/Scenes/World 1/Fase 4 W1.unity
     guid: 15c3f867c74928a498c2458001136510
@@ -43,10 +46,13 @@ EditorBuildSettings:
     guid: 70b5cab6d5e15fa4aa6e1c11b0248c09
   - enabled: 1
     path: Assets/Scenes/World 2/Fase 3 W2.unity
-    guid: 5a12877844d8c3d44ade92f1af06daaa
+    guid: 62e1605c232324e4b978201b8c093cc4
   - enabled: 1
     path: Assets/Scenes/World 2/Fase 4 W2.unity
-    guid: 708f1d8fe5ebcd74ba5328ef3276516d
+    guid: 5a12877844d8c3d44ade92f1af06daaa
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/World 2/Fase 5 W2.unity
     guid: ec53de054de287b41a2f6a231fb1f3c0
@@ -55,7 +61,7 @@ EditorBuildSettings:
     guid: af4a5a8f1a1b75341bc35486ab0829be
   - enabled: 1
     path: Assets/Scenes/World 3/Fase 2 W3.unity
-    guid: 62e1605c232324e4b978201b8c093cc4
+    guid: b55b1845b9c619e4ab03adbdbbe1c49e
   - enabled: 1
     path: Assets/Scenes/World 3/Fase 3 W3.unity
     guid: 443ac878166638d4ca92e40b7d7d71dc
@@ -71,10 +77,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Mundo 1 Menu.unity
     guid: c37e112edfe8e1d47af62d78c66db3c4
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 2 MENU/Mundo 2 Menu.unity
-    guid: 4d97d26f35c0faa4e8bc97256420a3ee
-  - enabled: 1
-    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 3 MENU/Mundo 3 Menu.unity
-    guid: 3c24a85b32a02d5419a6873623281ec7
+    path: Assets/Scenes/CENAS DO MENU/Menu/Menu Original.unity
+    guid: cb8af94518439d54aab95ca1451f31dd
   m_configObjects: {}

@@ -12602,6 +12602,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -1778042654078031786, guid: d0d1c5be7523b5a4290c44a1ebdb531b, type: 3}
+      propertyPath: nameNextScene
+      value: Fase 4 W1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1778042654078031786, guid: d0d1c5be7523b5a4290c44a1ebdb531b, type: 3}
       propertyPath: playerInScene
       value: 
       objectReference: {fileID: 645687472}
@@ -12619,7 +12623,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3629553763694601425, guid: d0d1c5be7523b5a4290c44a1ebdb531b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.62
+      value: 4.52
       objectReference: {fileID: 0}
     - target: {fileID: 3629553763694601425, guid: d0d1c5be7523b5a4290c44a1ebdb531b, type: 3}
       propertyPath: m_LocalPosition.z
