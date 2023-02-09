@@ -74,9 +74,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/Escolher Mundos.unity
     guid: a037bea084b88d0409cc69b6b969f919
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Mundo 1 Menu.unity
     guid: c37e112edfe8e1d47af62d78c66db3c4
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Selection Levels
+      Mundo 1/Levels of W1.unity
+    guid: 7e46c77003e61cf4b938cb6a39757013
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 2 MENU/Selection Levels
+      Mundo 2/Levels of W2.unity
+    guid: 814db17df152ecc4996399e8c3a0cd17
+  - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 3 MENU/Selection Levels
+      Mundo 3/Levels of W3.unity
+    guid: 2139b07267d167640ad0db07c96e1423
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000

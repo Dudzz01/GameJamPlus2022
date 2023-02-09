@@ -11,14 +11,14 @@ public class VerifyScenes : MonoBehaviour
     [SerializeField]private GameObject playerInScene;
     public static bool gameOverActive = false;
 
-    private void Start() {
-        Debug.Log($"Fase {1} é igual a {GameController.s.arrayFasesDesbloqueadas[1]}");
+    private void Start(){
+
+         //SceneManager.LoadScene(GetCurrentScene());
     }
 
     private void Update() 
     {
         
-        Debug.Log(GetCurrentScene());
 
         if(gameOverActive == true)
         {
@@ -35,9 +35,8 @@ public class VerifyScenes : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true)
         {
-            
-            GameController.s.arrayFasesDesbloqueadas[GameController.s.numeroDeFases] = true;
             GameController.s.numeroDeFases+=1;
+            GameController.s.arrayFasesDesbloqueadas[GameController.s.numeroDeFases] = true;
             Debug.Log($"Fase {GameController.s.numeroDeFases} é igual a {GameController.s.arrayFasesDesbloqueadas[GameController.s.numeroDeFases]}");
             GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
             Debug.Log("Player colidiu");

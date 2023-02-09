@@ -6,5 +6,5 @@ using UnityEngine;
 public class Save
 {
     public int numeroDeFases;
-    public bool[] arrayFasesDesbloqueadas = new bool[14];
+    public bool[] arrayFasesDesbloqueadas = new bool[20];
 }

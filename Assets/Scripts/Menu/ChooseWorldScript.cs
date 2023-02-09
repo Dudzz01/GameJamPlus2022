@@ -15,16 +15,21 @@ public class ChooseWorldScript : MonoBehaviour
     public void SelectWorld1()
     {
          
-        SceneManager.LoadScene("Fase 1 W1");
+        SceneManager.LoadScene("Levels of W1");
     }
 
     public void SelectWorld2()
     {
-        
+        SceneManager.LoadScene("Levels of W2");
     }
 
     public void SelectWorld3()
     {
-        
+        SceneManager.LoadScene("Levels of W3");
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("Menu Original");
     }
 }

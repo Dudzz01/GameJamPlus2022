@@ -39,25 +39,25 @@ public class ScriptErvas : MonoBehaviour
             {
                 case "Fase 3 W1":
 
-                arrayOfActionsPlayer[0] = true;
+                arrayOfActionsPlayer[0] = true; // double jump
 
                 break;
 
                 case "Fase 5 W1":
 
-                arrayOfActionsPlayer[1] = true;
+                arrayOfActionsPlayer[1] = true; // Wall jump
 
                 break;
 
                 case "Fase 2 W2":
 
-                arrayOfActionsPlayer[2] = true;
+                arrayOfActionsPlayer[2] = true;// dash
 
                 break;
 
                 case "Fase 1 W3":
 
-                arrayOfActionsPlayer[3] = true;
+                arrayOfActionsPlayer[3] = true;// tiro
 
                 break;
 

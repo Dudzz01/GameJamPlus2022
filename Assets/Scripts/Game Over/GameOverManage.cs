@@ -15,6 +15,7 @@ public class GameOverManage : MonoBehaviour
 
     public void GoMenu()
     {
-        
+        VerifyScenes.gameOverActive = false;
+        SceneManager.LoadScene("Menu Original");
     }
 }
