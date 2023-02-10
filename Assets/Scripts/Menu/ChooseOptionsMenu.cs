@@ -11,7 +11,7 @@ public class ChooseOptionsMenu : MonoBehaviour
         if(GetComponent<SaveGame>().LoadGameOfScene() == null)
          {
              GameController.s.arrayFasesDesbloqueadas[0] = true;
-             GameController.s.numeroDeFases = 0;
+             Debug.Log($"Fase {1} é igual a {GameController.s.arrayFasesDesbloqueadas[0]}");
              GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
          }
          else

@@ -5,10 +5,26 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     public static Save s = new Save();
-
-    
-    private void Update()
+    private static GameObject gmController;
+    private void Awake()
     {
-         DontDestroyOnLoad(this.transform.root.gameObject);   
+        DontDestroyOnLoad(this.transform.root.gameObject);
+
+        if(gmController == null)
+        {
+            gmController = this.transform.root.gameObject;
+        }
+        else
+        {
+            Destroy(this.transform.root.gameObject);
+        }
     }
+        
+    
+        
+    
 }
+    
+         
+    
+

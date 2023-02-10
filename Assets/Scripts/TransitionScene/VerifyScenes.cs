@@ -11,20 +11,27 @@ public class VerifyScenes : MonoBehaviour
     [SerializeField]private GameObject playerInScene;
     public static bool gameOverActive = false;
 
-    private void Start(){
+    private void Start()
+    {
 
-         //SceneManager.LoadScene(GetCurrentScene());
+         if(GetCurrentScene() == "FinalFeliz")
+         {
+            GameController.s.gameZerado = true;
+            GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
+         }
     }
 
     private void Update() 
     {
-        
+        GetCurrentScene();
 
         if(gameOverActive == true)
         {
             Destroy(playerInScene);
             gameOverObject.SetActive(true);
         }
+
+        
     }
 
     public static string GetCurrentScene()
@@ -35,9 +42,16 @@ public class VerifyScenes : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col) {
         if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true)
         {
-            GameController.s.numeroDeFases+=1;
-            GameController.s.arrayFasesDesbloqueadas[GameController.s.numeroDeFases] = true;
-            Debug.Log($"Fase {GameController.s.numeroDeFases} é igual a {GameController.s.arrayFasesDesbloqueadas[GameController.s.numeroDeFases]}");
+            if(GameController.s.gameZerado == true || GetCurrentScene() == "Fase 5 W3")
+            {
+                Debug.Log("Game ja está todo zerado, nao precisa mais contabilizar");
+            }
+            else
+            {
+                GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex+1] = true;
+            }
+            
+            Debug.Log($"Fase {SceneManager.GetActiveScene().buildIndex+2} é igual a {GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex]}");
             GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
             Debug.Log("Player colidiu");
             ScriptPlayer.QuantidadeErvasColetadas = 0;
