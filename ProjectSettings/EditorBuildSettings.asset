@@ -5,24 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/CENAS DO MENU/Menu/Menu FAKE.unity
-    guid: fff5de7294b6ca04da34be1bd30047ec
   - enabled: 0
-    path: Assets/Scenes/Mundo 1/Fase 1.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/Scenes/Mundo 1/Fase 2.unity
-    guid: 215ad86358af09e429f76b9898b57ad5
-  - enabled: 0
-    path: Assets/Scenes/Mundo 1/Fase 3.unity
-    guid: cfd2dd93f768ec343a0418bab3ad7500
-  - enabled: 1
-    path: Assets/Scenes/FinalFeliz.unity
-    guid: a27469374bc4f2148bb184f04434c787
-  - enabled: 0
-    path: Assets/Scenes/FinalTriste.unity
-    guid: 8e0c957ec0c68334880ca89ace8f3e04
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/World 1/Fase 1 W1.unity
     guid: 93c487a03268c9247b96f9e3d9316d58
@@ -50,9 +35,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/World 2/Fase 4 W2.unity
     guid: 5a12877844d8c3d44ade92f1af06daaa
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/World 2/Fase 5 W2.unity
     guid: ec53de054de287b41a2f6a231fb1f3c0
@@ -72,11 +54,11 @@ EditorBuildSettings:
     path: Assets/Scenes/World 3/Fase 5 W3.unity
     guid: 06d770bd99f9f394bbb0b138fe2ce541
   - enabled: 1
+    path: Assets/Scenes/FinalFeliz.unity
+    guid: a27469374bc4f2148bb184f04434c787
+  - enabled: 1
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/Escolher Mundos.unity
     guid: a037bea084b88d0409cc69b6b969f919
-  - enabled: 0
-    path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Mundo 1 Menu.unity
-    guid: c37e112edfe8e1d47af62d78c66db3c4
   - enabled: 1
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 1 MENU/Selection Levels
       Mundo 1/Levels of W1.unity
@@ -89,13 +71,10 @@ EditorBuildSettings:
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 3 MENU/Selection Levels
       Mundo 3/Levels of W3.unity
     guid: 2139b07267d167640ad0db07c96e1423
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/CENAS DO MENU/Menu/Menu Original.unity
     guid: cb8af94518439d54aab95ca1451f31dd
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
