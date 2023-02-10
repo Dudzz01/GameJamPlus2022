@@ -21,7 +21,7 @@ public class ScriptPlayer : MonoBehaviour
     [SerializeField] private SpriteRenderer spritePlayer;
     public string statePlayer{get; private set;} // verificar o state do player, só declarei, nao implementei ainda
     #endregion
-    #region WallJump/Jump/Collisions Variables
+    #region WallJump/Jump/Collisions/Actions Variables
     public bool IsGround {get; private set;} // verifica se o player está colidindo com o chao ou nao
     public float IsGroundTimerJumpCoyote{get; private set;}
     public bool IsWallRight {get; private set;} // verifica se o player está colidindo com a parede ou nao
@@ -39,6 +39,8 @@ public class ScriptPlayer : MonoBehaviour
     private Vector2 rightOffSetArm;
     private Vector2 leftOffSetArm;
     private bool jump;
+
+    private float shootTime;
     #endregion
     #region DashVariables
     
@@ -72,6 +74,7 @@ public class ScriptPlayer : MonoBehaviour
         canDash = true;
         jump = false;
         isDashing = false;
+        shootTime = 0.8f;
         
     }
 
@@ -194,10 +197,10 @@ public class ScriptPlayer : MonoBehaviour
 
     private void ShootAction()
     {
-        if(Input.GetKeyDown(KeyCode.H))
+        if(Input.GetKeyDown(KeyCode.H) && shootTime >= 0.8)
         {
             GameObject bulletP = Instantiate(bulletPlayer, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
-
+                       shootTime = 0; 
                 if(spritePlayer.flipX == true)
                 {
                     bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = -1; // caso o player esteja olhando pra esquerda, a direcao do tiro será para a esquerda
@@ -347,7 +350,13 @@ public class ScriptPlayer : MonoBehaviour
         
         if(arrayOfActionPermissionOfPlayer[3] == true)
         {
+            if(shootTime<=0.8)
+            {
+                shootTime+=Time.deltaTime;
+            }
+            
             ShootAction();// shooting = 3;
+
         }
 
         
@@ -445,13 +454,13 @@ public class ScriptPlayer : MonoBehaviour
             
         }
 
-        if(col.gameObject.tag == "Erva")
-        {
-            QuantidadeErvasColetadas+=1;
-            Destroy(col.gameObject);
+        // if(col.gameObject.tag == "Erva")
+        // {
+        //     QuantidadeErvasColetadas+=1;
+        //     Destroy(col.gameObject);
             
             
-        }
+        // }
 
         if(col.gameObject.tag == "Espinho")
         {
@@ -482,6 +491,17 @@ public class ScriptPlayer : MonoBehaviour
             StartCoroutine(GoMenu());
         }
    }
+
+   public void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Erva")
+        {
+            QuantidadeErvasColetadas+=1;
+            Destroy(col.gameObject);
+        }
+
+        
+    }
 
    private void OnCollisionStay2D(Collision2D col) {
     

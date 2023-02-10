@@ -29,6 +29,7 @@ public class ScriptBulletEnemy : MonoBehaviour
         if(col.gameObject.tag == "Player")
         {
             VerifyScenes.gameOverActive = true;
+            Destroy(gameObject);
         }
 
         if(col.gameObject.tag == "Tilemap")

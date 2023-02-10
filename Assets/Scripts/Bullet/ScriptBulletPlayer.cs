@@ -18,6 +18,7 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         if(col.gameObject.tag == "Enemy")
         {
             Destroy(col.gameObject);
+            Destroy(gameObject);
         }
 
         if(col.gameObject.tag == "BulletEnemy")
@@ -36,6 +37,7 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         if(col.gameObject.tag == "Enemy")
         {
             Destroy(col.gameObject);
+            Destroy(gameObject);
         }
 
         if(col.gameObject.tag == "BulletEnemy")
