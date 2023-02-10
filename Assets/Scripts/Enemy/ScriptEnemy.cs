@@ -10,12 +10,14 @@ public class ScriptEnemy : MonoBehaviour
 
     private float TimeToShoot {get; set;}
 
+    private float TimeToShootAgain {get; set;}
+
     [SerializeField]private int EyeEnemy;
 
     private void Start()
     {
         animShoot = false;
-        TimeToShoot = 1.5f;
+        TimeToShoot = 0;
     }
 
     private void Update()
@@ -27,14 +29,22 @@ public class ScriptEnemy : MonoBehaviour
     public void Shooting()
     {
         TimeToShoot+=Time.deltaTime;
-
-        if(TimeToShoot>=1.5 && animShoot == false)
+        //TimeToShootAgain+=Time.deltaTime;
+        
+        if(TimeToShoot == 0)
         {
-            animShoot = true;
+            animatorEnemy.SetInteger("ParadoToAtirar",1);
+        }
+        
+        if(TimeToShoot >= 1.10 && TimeToShoot < 1.11)
+        {
             GameObject bulletEnemy = Instantiate(bullet, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
-
             bulletEnemy.GetComponent<ScriptBulletEnemy>().DirBullet = EyeEnemy;
-            
+        }
+
+        if(TimeToShoot>=1.38)
+        {
+            // float duracao = animatorEnemy.GetCurrentAnimatorStateInfo (0).length;
             TimeToShoot = 0;
         }
         
@@ -44,20 +54,17 @@ public class ScriptEnemy : MonoBehaviour
     {
         if(animShoot == true)
         {
-            animatorEnemy.Play("EnemyAtirando");
-            StartCoroutine(AnimShootTime());
+            
+            //StartCoroutine(AnimShootTime());
         }
-        else
-        {
-             animatorEnemy.Play("EnemyCarregando");
-        }
+        
     }
 
-    private IEnumerator AnimShootTime()
-   {
-     yield return new WaitForSeconds(1.5f);
-     animShoot = false;
-     yield return new WaitForSeconds(0);
-   }
+//     private IEnumerator AnimShootTime()
+//    {
+//      yield return new WaitForSeconds(1f);
+//      animShoot = false;
+//      yield return new WaitForSeconds(0);
+//    }
 
 }

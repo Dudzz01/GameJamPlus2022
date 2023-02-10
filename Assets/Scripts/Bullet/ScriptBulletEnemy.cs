@@ -18,7 +18,7 @@ public class ScriptBulletEnemy : MonoBehaviour
 
     public virtual void MovimentOfBullet()
     {
-        float speedOfBulletX = 5;
+        float speedOfBulletX = 8.5f;
 
         rigBullet.velocity = new Vector2(DirBullet*speedOfBulletX,rigBullet.velocity.y);
 
