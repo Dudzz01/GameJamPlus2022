@@ -77,4 +77,13 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/World 0 -Tutorial/W0 - Fase1.unity
+    guid: bb2d177e9c01cd04585b2212091f44a2
+  - enabled: 1
+    path: Assets/Scenes/World 0 -Tutorial/W0 - Fase2.unity
+    guid: 56896d4e604dab9449c466520132076c
+  - enabled: 1
+    path: Assets/Scenes/World 0 -Tutorial/W0 - Fase3.unity
+    guid: 56ca9c5d84a1b094ca74e98f8d3f0187
   m_configObjects: {}

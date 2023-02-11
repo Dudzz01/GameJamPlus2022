@@ -546,9 +546,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverManage, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 884270514}
+        m_TargetAssemblyTypeName: ChooseOptionsMenu, Assembly-CSharp
+        m_MethodName: Tutorial
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

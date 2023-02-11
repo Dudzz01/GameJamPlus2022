@@ -11,6 +11,8 @@ public class VerifyScenes : MonoBehaviour
     [SerializeField]private GameObject playerInScene;
     public static bool gameOverActive = false;
 
+    private bool tutorial;
+
     private void Start()
     {
 
@@ -23,6 +25,15 @@ public class VerifyScenes : MonoBehaviour
 
     private void Update() 
     {
+        if(GetCurrentScene() == "W0 - Fase1" || GetCurrentScene() == "W0 - Fase2" || GetCurrentScene() == "W0 - Fase3")
+        {
+            tutorial = true;
+        }
+        else
+        {
+            tutorial = false;
+        }
+
         GetCurrentScene();
 
         if(gameOverActive == true)
@@ -40,7 +51,7 @@ public class VerifyScenes : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D col) {
-        if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true)
+        if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true && tutorial == false)
         {
             if(GameController.s.gameZerado == true || GetCurrentScene() == "Fase 5 W3")
             {
@@ -50,9 +61,18 @@ public class VerifyScenes : MonoBehaviour
             {
                 GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex+1] = true;
             }
-            
             Debug.Log($"Fase {SceneManager.GetActiveScene().buildIndex+2} é igual a {GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex]}");
             GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
+            
+            Debug.Log("Game está zerado? "+ GameController.s.gameZerado);
+            Debug.Log("Player colidiu");
+            ScriptPlayer.QuantidadeErvasColetadas = 0;
+            SceneManager.LoadScene(nameNextScene);
+            
+            //O player venceu
+        }
+        else if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true && tutorial == true)
+        {   
             Debug.Log("Player colidiu");
             ScriptPlayer.QuantidadeErvasColetadas = 0;
             SceneManager.LoadScene(nameNextScene);

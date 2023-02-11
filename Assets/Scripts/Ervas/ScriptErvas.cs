@@ -35,6 +35,15 @@ public class ScriptErvas : MonoBehaviour
                 Debug.Log(texto.enabled);
                 break;
 
+                case "W0 - Fase2":
+
+                arrayOfActionsPlayer[0] = true; // double jump
+                Text texto7 = textErva.gameObject.GetComponent<Text>();
+                texto7.enabled = true;
+                //StartCoroutine(DesabiltyText());
+                Debug.Log(texto7.enabled);
+                break;
+
                 case "Fase 5 W1":
 
                 arrayOfActionsPlayer[1] = true; // Wall jump

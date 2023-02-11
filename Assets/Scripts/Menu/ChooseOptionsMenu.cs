@@ -16,11 +16,17 @@ public class ChooseOptionsMenu : MonoBehaviour
          }
          else
          {
+            GameController.s.arrayFasesDesbloqueadas[0] = true;
             GameController.s =  GetComponent<SaveGame>().LoadGameOfScene();
          }
         
         
          SceneManager.LoadScene("Escolher Mundos");
+    }
+
+    public void Tutorial()
+    {
+         SceneManager.LoadScene("W0 - Fase1");
     }
 
     

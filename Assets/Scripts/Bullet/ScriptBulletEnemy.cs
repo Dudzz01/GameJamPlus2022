@@ -65,6 +65,16 @@ public class ScriptBulletEnemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(col.gameObject.tag == "Erva")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "PulaPula")
+        {
+            Destroy(gameObject);
+        }
     }
 
     public virtual void OnTriggerEnter2D(Collider2D col)
@@ -91,6 +101,16 @@ public class ScriptBulletEnemy : MonoBehaviour
         }
 
         if(col.gameObject.tag == "Placa")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Erva")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "PulaPula")
         {
             Destroy(gameObject);
         }

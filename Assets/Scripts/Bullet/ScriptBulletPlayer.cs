@@ -81,6 +81,16 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         {
             Destroy(gameObject);
         }
+
+        if(col.gameObject.tag == "Erva")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "PulaPula")
+        {
+            Destroy(gameObject);
+        }
     }
 
     
