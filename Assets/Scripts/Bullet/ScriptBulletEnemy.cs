@@ -60,5 +60,39 @@ public class ScriptBulletEnemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        if(col.gameObject.tag == "Placa")
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public virtual void OnTriggerEnter2D(Collider2D col)
+    {
+         if(col.gameObject.tag == "Player")
+        {
+            VerifyScenes.gameOverActive = true;
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Tilemap")
+        {
+            Destroy(gameObject); 
+        }
+
+        if(col.gameObject.tag == "Espinho")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Serra")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Placa")
+        {
+            Destroy(gameObject);
+        }
     }
 }

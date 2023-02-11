@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8873859934213675129}
   m_Layer: 0
   m_Name: "CondicaoVit\xF3riaFase"
-  m_TagString: Untagged
+  m_TagString: Placa
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

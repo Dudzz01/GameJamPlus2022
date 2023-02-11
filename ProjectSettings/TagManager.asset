@@ -17,6 +17,7 @@ TagManager:
   - Tilemap
   - BulletPlayer
   - BulletEnemy
+  - Placa
   layers:
   - Default
   - TransparentFX

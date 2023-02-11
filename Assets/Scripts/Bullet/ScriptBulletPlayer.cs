@@ -40,11 +40,16 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         {
             Destroy(gameObject);
         }
+
+        if(col.gameObject.tag == "Placa")
+        {
+            Destroy(gameObject);
+        }
     }
 
     
 
-    public void OnTriggerEnter2D(Collider2D col)
+    public override void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.tag == "Enemy")
         {
@@ -68,6 +73,11 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         }
 
         if(col.gameObject.tag == "Serra")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Placa")
         {
             Destroy(gameObject);
         }
