@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigBullet: {fileID: -1746650702217514279}
+  spriteBullet: {fileID: 7215618882287594486}
 --- !u!61 &3818309508424088604
 BoxCollider2D:
   m_ObjectHideFlags: 0

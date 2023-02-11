@@ -57,6 +57,8 @@ public class ScriptPlayer : MonoBehaviour
     #endregion
     #region ActionPermissionVariables
     [SerializeField] private bool[] arrayOfActionPermissionOfPlayer = new bool[4];
+    private bool shootPlayerAnim;
+    
     #endregion
     private void Awake() 
     { 
@@ -89,6 +91,9 @@ public class ScriptPlayer : MonoBehaviour
             animPlayer.AnimationPlayer("IndioDash");
             return;
         }
+
+        
+        
         PlayerAnimMoviment(statePlayer); // maquina de estados para gerenciar as animacoes do player
         #region DirectionsPlayer
         directionPlayerH = Input.GetAxisRaw("Horizontal"); // variavel para saber a direcao h do player
@@ -127,6 +132,7 @@ public class ScriptPlayer : MonoBehaviour
     {
         if((IsWallRight && directionPlayerH == 1 || IsWallLeft && directionPlayerH == -1) && !IsGround) // se estiver colidindo com a parede e pressionando o botao de movimento em direcao a parede e se não estiver colidindo com o chao, ele fara o sliding
         {
+
              statePlayer = "SlidingPlayer";
              IsSliding = true;
              rig.velocity = new Vector2(rig.velocity.x, -2); // Deslizando
@@ -156,8 +162,12 @@ public class ScriptPlayer : MonoBehaviour
                 spritePlayer.flipX = false; 
                 
             }
+
+            if(shootPlayerAnim == false)
+            {
             statePlayer = "JumpPlayer";
         
+            }
         }
         
     }
@@ -165,14 +175,18 @@ public class ScriptPlayer : MonoBehaviour
     
     private void Walk()
     {
-        if(directionPlayerH == 0 && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja parado
+        if(shootPlayerAnim == false)
         {
+            if(directionPlayerH == 0 && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja parado
+            {
             statePlayer = "ParadoPlayer";
-        }
-        else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja andando
-        {
+            }
+            else if(directionPlayerH!=0 && IsSliding == false && IsWallJumping == false && IsGround) // Condicoes para que a animacao do player seja andando
+            {
              statePlayer = "MovimentoPlayer";
+            }
         }
+        
         if(CanMove)
         {   //movimento de walk do player otimizado, para funcionar de forma mais fluida
             float horizontalSpeedPlayerH = rig.velocity.x;
@@ -197,17 +211,32 @@ public class ScriptPlayer : MonoBehaviour
 
     private void ShootAction()
     {
-        if(Input.GetKeyDown(KeyCode.H) && shootTime >= 0.8)
-        {
-            GameObject bulletP = Instantiate(bulletPlayer, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
-                       shootTime = 0; 
-                if(spritePlayer.flipX == true)
-                {
-                    bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = -1; // caso o player esteja olhando pra esquerda, a direcao do tiro será para a esquerda
-                    return;
-                }
+        float duracao = animPlayer.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).length;
 
-                    bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = 1; // caso o player esteja olhando pra direita, a direcao do tiro será para a direita        
+        if(shootPlayerAnim == true)
+        {
+            animPlayer.GetComponent<Animator>().SetInteger("AllToShoot",1);
+            statePlayer = "PlayerAttackAnim";
+        }
+
+        if(Input.GetKeyDown(KeyCode.H))
+        {
+            shootPlayerAnim = true;
+            if(shootTime>=0.8 && statePlayer == "PlayerAttackAnim")
+            {
+                    GameObject bulletP = Instantiate(bulletPlayer, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
+                    shootTime = 0; 
+                    shootPlayerAnim = false;
+                    animPlayer.GetComponent<Animator>().SetInteger("AllToShoot",0);
+                    if(spritePlayer.flipX == true)
+                    {
+                        bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = -1; // caso o player esteja olhando pra esquerda, a direcao do tiro será para a esquerda
+                        return;
+                    }
+
+                    bulletP.GetComponent<ScriptBulletPlayer>().DirBullet = 1; // caso o player esteja olhando pra direita, a direcao do tiro será para a direita 
+            }
+                   
         }
             
     }
@@ -217,7 +246,10 @@ public class ScriptPlayer : MonoBehaviour
 
         if( Input.GetKeyDown(KeyCode.W) && IsGroundTimerJumpCoyote>0) // Se apertar W e colidir com o chao... 
         {
-            statePlayer = "JumpPlayer";
+            if(shootPlayerAnim == false)
+            {
+                statePlayer = "JumpPlayer";
+            }
             jump = true;
             IsGroundTimerJumpCoyote = 0;
             doubleJump = false;
@@ -269,13 +301,19 @@ public class ScriptPlayer : MonoBehaviour
          if(IsGround!=true && IsSliding == false && IsWallJumping == false )
          {
             
-            statePlayer = "JumpPlayer"; // animacao de jump
+            if(shootPlayerAnim == false)
+            {
+                statePlayer = "JumpPlayer";
+            }
             
          }
          
          if(doubleJump == true && Input.GetKeyDown(KeyCode.W))
          {
-            statePlayer = "DoubleJumpPlayer"; // animacao de double jump
+            if(shootPlayerAnim == false)
+            {
+                statePlayer = "DoubleJumpPlayer";
+            }
          }
         
         #region Coyote/Responsive Jump
@@ -436,6 +474,11 @@ public class ScriptPlayer : MonoBehaviour
             case "DoubleJumpPlayer":
                 
                 animPlayer.AnimationPlayer("DoubleJumpPlayer");
+            break;
+
+            case "PlayerAttackAnim":
+                
+                animPlayer.AnimationPlayer("PlayerAttackAnim");
             break;
 
             default:

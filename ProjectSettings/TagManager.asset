@@ -66,3 +66,6 @@ TagManager:
   - name: Transition
     uniqueID: 3213076949
     locked: 0
+  - name: EnemyLayer
+    uniqueID: 2743129889
+    locked: 0

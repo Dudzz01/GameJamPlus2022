@@ -10,12 +10,14 @@ public class GameOverManage : MonoBehaviour
     {
         Debug.Log("Restart");
         SceneManager.LoadScene(VerifyScenes.GetCurrentScene());
+        ScriptPlayer.QuantidadeErvasColetadas = 0;
         VerifyScenes.gameOverActive = false;
     }
 
     public void GoMenu()
     {
         VerifyScenes.gameOverActive = false;
+        ScriptPlayer.QuantidadeErvasColetadas = 0;
         SceneManager.LoadScene("Menu Original");
     }
 }

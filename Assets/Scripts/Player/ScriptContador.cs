@@ -24,7 +24,7 @@ public  class ScriptContador : MonoBehaviour
         }
 
         
-        textContador.text = ContadorTempoDuranteJogo.ToString("F2");
+        textContador.text = ContadorTempoDuranteJogo.ToString("F2")+"/"+TempoLimiteFase.ToString();
 
 
         if(ContadorTempoDuranteJogo>TempoLimiteFase)

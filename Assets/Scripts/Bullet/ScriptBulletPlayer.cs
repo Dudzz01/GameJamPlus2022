@@ -30,7 +30,19 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         {
             Destroy(gameObject);
         }
+
+        if(col.gameObject.tag == "Espinho")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Serra")
+        {
+            Destroy(gameObject);
+        }
     }
+
+    
 
     public void OnTriggerEnter2D(Collider2D col)
     {
@@ -46,6 +58,16 @@ public class ScriptBulletPlayer : ScriptBulletEnemy
         }
 
         if(col.gameObject.tag == "Tilemap")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Espinho")
+        {
+            Destroy(gameObject);
+        }
+
+        if(col.gameObject.tag == "Serra")
         {
             Destroy(gameObject);
         }
