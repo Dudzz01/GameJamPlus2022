@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
+    path: Assets/Scenes/CENAS DO MENU/Menu/Menu Original.unity
+    guid: cb8af94518439d54aab95ca1451f31dd
+  - enabled: 1
     path: Assets/Scenes/World 1/Fase 1 W1.unity
     guid: 93c487a03268c9247b96f9e3d9316d58
   - enabled: 1
@@ -71,9 +74,6 @@ EditorBuildSettings:
     path: Assets/Scenes/CENAS DO MENU/ESCOLHER MUNDOS/MUNDO 3 MENU/Selection Levels
       Mundo 3/Levels of W3.unity
     guid: 2139b07267d167640ad0db07c96e1423
-  - enabled: 1
-    path: Assets/Scenes/CENAS DO MENU/Menu/Menu Original.unity
-    guid: cb8af94518439d54aab95ca1451f31dd
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
