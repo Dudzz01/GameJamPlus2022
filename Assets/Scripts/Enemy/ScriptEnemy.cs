@@ -1,4 +1,4 @@
-using System.Collections;
+ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,7 @@ public class ScriptEnemy : MonoBehaviour
 {
     [SerializeField] private GameObject bullet;
     [SerializeField] private Animator animatorEnemy;
+    [SerializeField] private AudioSource sourceAudio;
     private bool animShoot;
 
     private float TimeToShoot {get; set;}
@@ -34,9 +35,10 @@ public class ScriptEnemy : MonoBehaviour
         if(TimeToShoot == 0)
         {
             animatorEnemy.SetInteger("ParadoToAtirar",1);
+            
         }
         
-        if(TimeToShoot >= 1.10 && TimeToShoot < 1.108)
+        if(TimeToShoot >= 1.10 && TimeToShoot < 1.11)
         {
             GameObject bulletEnemy = Instantiate(bullet, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
             bulletEnemy.GetComponent<ScriptBulletEnemy>().DirBullet = EyeEnemy;
@@ -45,6 +47,7 @@ public class ScriptEnemy : MonoBehaviour
         if(TimeToShoot>=1.38)
         {
             // float duracao = animatorEnemy.GetCurrentAnimatorStateInfo (0).length;
+            
             TimeToShoot = 0;
         }
         
@@ -58,6 +61,14 @@ public class ScriptEnemy : MonoBehaviour
             //StartCoroutine(AnimShootTime());
         }
         
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.tag == "BulletPlayer")
+        {
+            sourceAudio.Play();
+        }
     }
 
 //     private IEnumerator AnimShootTime()

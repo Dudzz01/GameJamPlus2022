@@ -9,18 +9,22 @@ public class VerifyScenes : MonoBehaviour
     [SerializeField]private GameObject gameOverObject;
 
     [SerializeField]private GameObject playerInScene;
+    
+    
     public static bool gameOverActive = false;
 
     private bool tutorial;
 
     private void Start()
     {
+         
 
          if(GetCurrentScene() == "FinalFeliz")
          {
             GameController.s.gameZerado = true;
             GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
          }
+
     }
 
     private void Update() 
@@ -31,6 +35,7 @@ public class VerifyScenes : MonoBehaviour
         }
         else
         {
+           
             tutorial = false;
         }
 

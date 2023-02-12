@@ -6,8 +6,17 @@ using UnityEngine.SceneManagement;
 public class ChooseOptionsMenu : MonoBehaviour
 {
     
+    //private AudioSource audioSourceMenu;
+    //[SerializeField] private AudioClip audioClipMenu;
+
+    private void Start() {
+        //audioSourceMenu = GetComponent<AudioSource>();
+    }
+
     public void SelectPlay()
     {
+        //audioSourceMenu.clip = audioClipMenu;
+        //audioSourceMenu.Play();
         if(GetComponent<SaveGame>().LoadGameOfScene() == null)
          {
              GameController.s.arrayFasesDesbloqueadas[0] = true;
@@ -20,13 +29,24 @@ public class ChooseOptionsMenu : MonoBehaviour
             GameController.s =  GetComponent<SaveGame>().LoadGameOfScene();
          }
         
-        
+         GameController.s.arrayFasesDesbloqueadas[0] = true;
+         
          SceneManager.LoadScene("Escolher Mundos");
     }
 
     public void Tutorial()
     {
          SceneManager.LoadScene("W0 - Fase1");
+    }
+
+    public void Creditos()
+    {
+        SceneManager.LoadScene("Créditos");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 
     

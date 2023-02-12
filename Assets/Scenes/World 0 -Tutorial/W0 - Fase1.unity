@@ -5234,7 +5234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253994, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 700
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253994, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5266,11 +5266,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253994, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -4
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253994, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 87
+      value: 71
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253994, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5299,12 +5299,12 @@ PrefabInstance:
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Text
       value: "Para Completar suas fases da forma correta e avan\xE7ar para o pr\xF3ximo
-        level \xE9 necess\xE1rio 2 requisitos: Adquirir a Erva Medicinal para salvar
-        o paj\xE9 e tamb\xE9m concluir a fase dentro do tempo limite de cada level
-        em espec\xEDfico (ex: Nessa fase o tempo limite \xE9 100, s\xF3 observar
-        o contador).\n\nControles de Movimento: W (Jump), A (Move para a esquerda),
-        D ( Move para a Direita),\nFa\xE7a um teste agora e avance para a pr\xF3xima
-        etapa do tutorial!"
+        level \xE9 necess\xE1rio colidir com a placa cumprindo 2 requisitos: Adquirir
+        a Erva Medicinal para salvar o paj\xE9 e tamb\xE9m colidir com a placa para
+        concluir a fase dentro do tempo limite de cada level em espec\xEDfico (ex:
+        Nessa fase o tempo limite \xE9 100, s\xF3 observar o contador). \n\nControles
+        de Movimento: W (Jump), A (Move para a esquerda), D ( Move para a Direita),\nFa\xE7a
+        um teste agora e avance para a pr\xF3xima etapa do tutorial!"
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Color.b

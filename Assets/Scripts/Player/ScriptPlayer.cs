@@ -414,14 +414,17 @@ public class ScriptPlayer : MonoBehaviour
            
         }
 
-         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) && IsGroundTimerJumpCoyote > 0 && IsGround)
+         if(Input.GetKeyDown(KeyCode.A ) || Input.GetKeyDown(KeyCode.D) )
          {
-            audioSource.clip = audiosPlayer[0];
-            audioSource.loop = true;
-            audioSource.Play();
-            
+            if(IsGroundTimerJumpCoyote > 0 && IsGround)
+            {
+                audioSource.clip = audiosPlayer[0];
+                audioSource.loop = true;
+                audioSource.Play();
+            }
+
          }
-         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) || IsGroundTimerJumpCoyote <= 0 && !IsGround)
+         if(directionPlayerH == 0 && !Input.GetKeyDown(KeyCode.A ) && !Input.GetKeyDown(KeyCode.D) )
          {
             audioSource.loop = false;
          }
@@ -507,8 +510,9 @@ public class ScriptPlayer : MonoBehaviour
 
         if(col.gameObject.tag == "Espinho")
         {
-            VerifyScenes.gameOverActive = true;
             audioSource.PlayOneShot(audiosPlayer[2]);
+            VerifyScenes.gameOverActive = true;
+            
             StartCoroutine(TrailRendActive());
         }
 
@@ -520,8 +524,9 @@ public class ScriptPlayer : MonoBehaviour
 
         if(col.gameObject.tag == "Serra")
         {
-            VerifyScenes.gameOverActive = true;
             audioSource.PlayOneShot(audiosPlayer[2]);
+            VerifyScenes.gameOverActive = true;
+            
             StartCoroutine(TrailRendActive());
         }
 

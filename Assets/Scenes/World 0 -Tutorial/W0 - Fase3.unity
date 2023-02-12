@@ -1218,10 +1218,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Text
-      value: "Teste suas Habilidades!\nDouble Jump: W+W\nWall Jump: (Estar fora do
-        ch\xE3o) Pressionar A ou D + W\n(Depende se a parede esta na esquerda ou
-        direita) \nDash: Apertar space com o curumim direcionado para onde deseja
-        se locomover\nTiro de arco flecha: H(Para mirar) + H(Para atirar)"
+      value: "Teste suas Habilidades!\nJump: W ( Quanto mais tempo pressionar o W,
+        maior o pulo)\nDouble Jump: W+W ( Quanto mais tempo pressionar o W, maior
+        o pulo)\nWall Jump: (Estar fora do ch\xE3o) Pressionar A ou D + W\n(Depende
+        se a parede esta na esquerda ou direita) \nDash: Apertar space com o curumim
+        direcionado para onde deseja se locomover\nTiro de arco flecha: H(Para mirar)
+        + H(Para atirar)"
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Color.b

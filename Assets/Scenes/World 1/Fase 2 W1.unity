@@ -495,7 +495,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 56
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -1221,7 +1221,7 @@ PrefabInstance:
       objectReference: {fileID: 712314702}
     - target: {fileID: -1332128234416554959, guid: a577747ee3b315c4aa9f2292c8c4121b, type: 3}
       propertyPath: TempoLimiteFase
-      value: 60
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 3525177355510259891, guid: a577747ee3b315c4aa9f2292c8c4121b, type: 3}
       propertyPath: m_RootOrder

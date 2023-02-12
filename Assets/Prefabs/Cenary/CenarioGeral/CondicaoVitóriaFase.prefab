@@ -50,6 +50,7 @@ MonoBehaviour:
   nameNextScene: Fase 2 W1
   gameOverObject: {fileID: 0}
   playerInScene: {fileID: 0}
+  objectSound: {fileID: 8026338630589977301, guid: 4e9bf6b8db3f71f42a71bd74647771f1, type: 3}
 --- !u!212 &-6746045055584867887
 SpriteRenderer:
   m_ObjectHideFlags: 0

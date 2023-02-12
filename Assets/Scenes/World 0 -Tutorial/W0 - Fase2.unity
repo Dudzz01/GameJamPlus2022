@@ -4496,14 +4496,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253995, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_EffectColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253995, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_EffectColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253995, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_EffectColor.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Text
       value: "Voc\xEA Adquiriu o Pulo Duplo \npara continuar sua miss\xE3o!\n(Essa
-        ser\xE1 a mensagem que aparecer\xE1 no jogo ao adquirir \num novo poder)"
+        ser\xE1 a mensagem que aparecer\xE1 no jogo ao adquirir \num novo poder,
+        s\xF3 com outra colora\xE7\xE3o)"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_Color.b
+      value: 0.043603964
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_Color.g
+      value: 0.047169805
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_Color.r
+      value: 0.023807403
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
+      propertyPath: m_FontData.m_RichText
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4588393460835253996, guid: f2624bcb7f03781428d1edef959bb1aa, type: 3}
       propertyPath: m_FontData.m_LineSpacing
