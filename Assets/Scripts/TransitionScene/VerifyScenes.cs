@@ -64,9 +64,9 @@ public class VerifyScenes : MonoBehaviour
             }
             else
             {
-                GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex+1] = true;
+                GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex] = true;
             }
-            Debug.Log($"Fase {SceneManager.GetActiveScene().buildIndex+2} é igual a {GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex]}");
+            Debug.Log($"Fase {SceneManager.GetActiveScene().buildIndex+1} é igual a {GameController.s.arrayFasesDesbloqueadas[SceneManager.GetActiveScene().buildIndex]}");
             GetComponent<SaveGame>().SaveGameOfScene(GameController.s);
             
             Debug.Log("Game está zerado? "+ GameController.s.gameZerado);
