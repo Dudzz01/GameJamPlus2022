@@ -228,6 +228,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 94.66998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923266, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -72
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923269, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_Text
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1408762086010923269, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1408762086726119608, guid: 4eeaaf8dad0ad0c4082120c2ce73d48f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9023,7 +9059,7 @@ PrefabInstance:
       objectReference: {fileID: 18352678}
     - target: {fileID: -1332128234416554959, guid: a577747ee3b315c4aa9f2292c8c4121b, type: 3}
       propertyPath: TempoLimiteFase
-      value: 20
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 3525177355510259891, guid: a577747ee3b315c4aa9f2292c8c4121b, type: 3}
       propertyPath: m_RootOrder

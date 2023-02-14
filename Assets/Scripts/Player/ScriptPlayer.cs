@@ -118,16 +118,18 @@ public class ScriptPlayer : MonoBehaviour
         //     DashAction(); // dash = 2;
         // }
         
-        ManageAllActionsOfPlayer();
+        
         #endregion
         #region ConfigActionsPlayer
-        
+        ManageAllActionsOfPlayer();
         SoundSettings();
         #endregion
         
        
     }
-
+    void FixedUpdate() {
+         Walk(); 
+    }
     private void SlidingWall()
     {
         if((IsWallRight && directionPlayerH == 1 || IsWallLeft && directionPlayerH == -1) && !IsGround) // se estiver colidindo com a parede e pressionando o botao de movimento em direcao a parede e se não estiver colidindo com o chao, ele fara o sliding
@@ -191,7 +193,7 @@ public class ScriptPlayer : MonoBehaviour
         {   //movimento de walk do player otimizado, para funcionar de forma mais fluida
             float horizontalSpeedPlayerH = rig.velocity.x;
             horizontalSpeedPlayerH += directionPlayerH;
-            horizontalSpeedPlayerH *= Mathf.Pow(0.1f,Time.deltaTime*10);
+            horizontalSpeedPlayerH *= Mathf.Pow(0.5f,Time.deltaTime*10);
             rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f),rig.velocity.y);
         }  
     }
@@ -366,7 +368,7 @@ public class ScriptPlayer : MonoBehaviour
 
     public void ManageAllActionsOfPlayer()
     {
-        Walk(); 
+       
 
         JumpMovimentEffects();// condicao será feita dentro do método
         JumpInput();
@@ -512,7 +514,7 @@ public class ScriptPlayer : MonoBehaviour
         {
             audioSource.PlayOneShot(audiosPlayer[2]);
             VerifyScenes.gameOverActive = true;
-            
+  print ("oi");          
             StartCoroutine(TrailRendActive());
         }
 

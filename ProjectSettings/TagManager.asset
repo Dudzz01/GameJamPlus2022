@@ -28,8 +28,8 @@ TagManager:
   - Chao
   - Transition
   - ObjetosChao
-  - 
-  - 
+  - Placa
+  - Espinhos
   - 
   - 
   - 
@@ -69,4 +69,7 @@ TagManager:
     locked: 0
   - name: EnemyLayer
     uniqueID: 2743129889
+    locked: 0
+  - name: Canvas
+    uniqueID: 1826659915
     locked: 0

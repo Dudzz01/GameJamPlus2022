@@ -55,7 +55,7 @@ public class VerifyScenes : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
-    private void OnCollisionEnter2D(Collision2D col) {
+    private void OnTriggerEnter2D(Collider2D col) {
         if(col.gameObject.tag == "Player" && ScriptPlayer.QuantidadeErvasColetadas > 0 && ScriptContador.ConcluiuTempoDaFase == true && tutorial == false)
         {
             if(GameController.s.gameZerado == true || GetCurrentScene() == "Fase 5 W3")

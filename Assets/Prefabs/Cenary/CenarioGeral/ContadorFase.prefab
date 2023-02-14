@@ -46,4 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textContador: {fileID: 0}
   objectContador: {fileID: 0}
-  TempoLimiteFase: 0
+  TempoLimiteFase: 60

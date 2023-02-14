@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -6746045055584867887}
   - component: {fileID: 3981250122609635388}
   - component: {fileID: 8873859934213675129}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: "CondicaoVit\xF3riaFase"
   m_TagString: Placa
   m_Icon: {fileID: 0}
@@ -50,7 +50,6 @@ MonoBehaviour:
   nameNextScene: Fase 2 W1
   gameOverObject: {fileID: 0}
   playerInScene: {fileID: 0}
-  objectSound: {fileID: 8026338630589977301, guid: 4e9bf6b8db3f71f42a71bd74647771f1, type: 3}
 --- !u!212 &-6746045055584867887
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -113,7 +112,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.010028601}
