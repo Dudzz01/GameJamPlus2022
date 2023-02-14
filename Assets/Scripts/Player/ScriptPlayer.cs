@@ -70,9 +70,9 @@ public class ScriptPlayer : MonoBehaviour
         trailRenderer.sortingLayerName = "Player";
         statePlayer = "MovePlayer"; // Stateplayer é o estado de animacao do player
         CanMove = true;
-        dashPower = 12f;
+        dashPower = 10f;
         timeDurationDash = 0.6f;
-        timeCooldownDash = 0.5f;
+        timeCooldownDash = 0.3f;
         canDash = true;
         jump = false;
         isDashing = false;
@@ -118,17 +118,17 @@ public class ScriptPlayer : MonoBehaviour
         //     DashAction(); // dash = 2;
         // }
         
-        
+        ManageAllActionsOfPlayer();
         #endregion
         #region ConfigActionsPlayer
-        ManageAllActionsOfPlayer();
+        
         SoundSettings();
         #endregion
         
        
     }
     void FixedUpdate() {
-         Walk(); 
+          
     }
     private void SlidingWall()
     {
@@ -193,8 +193,8 @@ public class ScriptPlayer : MonoBehaviour
         {   //movimento de walk do player otimizado, para funcionar de forma mais fluida
             float horizontalSpeedPlayerH = rig.velocity.x;
             horizontalSpeedPlayerH += directionPlayerH;
-            horizontalSpeedPlayerH *= Mathf.Pow(0.5f,Time.deltaTime*10);
-            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f),rig.velocity.y);
+            horizontalSpeedPlayerH *= Mathf.Pow(0.1f,Time.deltaTime*10);
+            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-7f,7f),rig.velocity.y);
         }  
     }
 
@@ -351,7 +351,6 @@ public class ScriptPlayer : MonoBehaviour
      if(directionPlayerH!=0)
      {
         rig.velocity = new Vector2(directionPlayerH*dashPower,0);
-        return;
      }
      //caso o player esteja parado, ou seja, directionPlayerH = 0...
      if(spritePlayer.flipX == false)
@@ -369,7 +368,7 @@ public class ScriptPlayer : MonoBehaviour
     public void ManageAllActionsOfPlayer()
     {
        
-
+        Walk();
         JumpMovimentEffects();// condicao será feita dentro do método
         JumpInput();
         
