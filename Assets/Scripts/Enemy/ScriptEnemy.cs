@@ -38,7 +38,7 @@ public class ScriptEnemy : MonoBehaviour
             
         }
         
-        if(TimeToShoot >= 1.10 && TimeToShoot < 1.11)
+        if(TimeToShoot >= 1.10 && TimeToShoot < 1.12)
         {
             GameObject bulletEnemy = Instantiate(bullet, new Vector3(this.gameObject.transform.position.x,this.gameObject.transform.position.y,0), Quaternion.identity);
             bulletEnemy.GetComponent<ScriptBulletEnemy>().DirBullet = EyeEnemy;

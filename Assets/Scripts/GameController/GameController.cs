@@ -8,6 +8,8 @@ public class GameController : MonoBehaviour
     private static GameObject gmController;
     private void Awake()
     {
+        Application.targetFrameRate = 60;
+        
         DontDestroyOnLoad(this.transform.root.gameObject);
 
         if(gmController == null)

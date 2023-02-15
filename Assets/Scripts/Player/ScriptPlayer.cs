@@ -1,4 +1,4 @@
-   using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -54,6 +54,13 @@ public class ScriptPlayer : MonoBehaviour
 
     public float directionPlayerH{get; private set;} // direcao horizontal do player
     public float directionPlayerY{get; private set;} // direcao horizontal do player
+
+     [SerializeField] 
+     private float fHorizontalDampingBasic = 0.4f;
+     [SerializeField]
+     private float fHorizontalDampingWhenStopping = 0.7f;
+     [SerializeField]
+     private float fHorizontalDampingWhenTurning = 0.7f;
     #endregion
     #region ActionPermissionVariables
     [SerializeField] private bool[] arrayOfActionPermissionOfPlayer = new bool[4];
@@ -117,7 +124,7 @@ public class ScriptPlayer : MonoBehaviour
         // {
         //     DashAction(); // dash = 2;
         // }
-        
+        Walk();
         ManageAllActionsOfPlayer();
         #endregion
         #region ConfigActionsPlayer
@@ -127,9 +134,7 @@ public class ScriptPlayer : MonoBehaviour
         
        
     }
-    void FixedUpdate() {
-          
-    }
+    
     private void SlidingWall()
     {
         if((IsWallRight && directionPlayerH == 1 || IsWallLeft && directionPlayerH == -1) && !IsGround) // se estiver colidindo com a parede e pressionando o botao de movimento em direcao a parede e se não estiver colidindo com o chao, ele fara o sliding
@@ -155,12 +160,12 @@ public class ScriptPlayer : MonoBehaviour
             
             if(IsWallRight)
             {
-               rig.velocity = new Vector2(-10,10);
+               rig.velocity = new Vector2(-9,12);
                spritePlayer.flipX = true; // Váriavel que basicamente inverte a sprite para condizer com o movimento do player
             }
             if(IsWallLeft)
             {
-                rig.velocity = new Vector2(10,10);
+                rig.velocity = new Vector2(9,12);
                 spritePlayer.flipX = false; 
                 
             }
@@ -174,7 +179,6 @@ public class ScriptPlayer : MonoBehaviour
         
     }
 
-    
     private void Walk()
     {
         if(shootPlayerAnim == false)
@@ -191,10 +195,19 @@ public class ScriptPlayer : MonoBehaviour
         
         if(CanMove)
         {   //movimento de walk do player otimizado, para funcionar de forma mais fluida
-            float horizontalSpeedPlayerH = rig.velocity.x;
-            horizontalSpeedPlayerH += directionPlayerH;
-            horizontalSpeedPlayerH *= Mathf.Pow(0.1f,Time.deltaTime*10);
-            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-7f,7f),rig.velocity.y);
+             float horizontalSpeedPlayerH = rig.velocity.x;
+             horizontalSpeedPlayerH += directionPlayerH;
+            //  horizontalSpeedPlayerH *= Mathf.Pow(0.4f, Time.deltaTime * 10f);
+            //  rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f), rig.velocity.y);
+             if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
+             horizontalSpeedPlayerH *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10f);
+             else if (Mathf.Sign(Input.GetAxisRaw("Horizontal")) != Mathf.Sign(horizontalSpeedPlayerH))
+             horizontalSpeedPlayerH *= Mathf.Pow(1f - fHorizontalDampingWhenTurning, Time.deltaTime * 10f);
+             else
+             horizontalSpeedPlayerH *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f);
+            //horizontalSpeedPlayerH *= Mathf.Pow(0.3f,Time.deltaTime*10);
+            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f),rig.velocity.y);
+            
         }  
     }
 
@@ -368,7 +381,7 @@ public class ScriptPlayer : MonoBehaviour
     public void ManageAllActionsOfPlayer()
     {
        
-        Walk();
+        //Walk();
         JumpMovimentEffects();// condicao será feita dentro do método
         JumpInput();
         
