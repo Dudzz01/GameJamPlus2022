@@ -2625,6 +2625,9 @@ MonoBehaviour:
   transformFeet: {fileID: 1953672573}
   transformArm: {fileID: 361884320}
   powerJump: 12
+  fHorizontalDampingBasic: 0.4
+  fHorizontalDampingWhenStopping: 0.7
+  fHorizontalDampingWhenTurning: 0.7
   arrayOfActionPermissionOfPlayer: 01010000
 --- !u!212 &642528158
 SpriteRenderer:
@@ -4708,10 +4711,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

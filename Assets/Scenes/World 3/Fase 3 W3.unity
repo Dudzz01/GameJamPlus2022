@@ -501,10 +501,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5586,7 +5586,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 8
+  orthographic size: 8.95
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -6613,6 +6613,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8645054117404035061, guid: 733fafdf1cdb2b948b9dbdb948eee26b, type: 3}
   m_PrefabInstance: {fileID: 931665983}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1097910824
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -2553792429506817313, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: d468e4e58628d3f42ad3adc2dfb61347, type: 2}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -7.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792780228114889477, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5197173736337060977, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: m_Name
+      value: Enemy (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6300289119153258884, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
+      propertyPath: EyeEnemy
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b765bde9b3ccf85469571bc8c07c431b, type: 3}
 --- !u!1001 &1211508198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7226,6 +7291,9 @@ MonoBehaviour:
   transformFeet: {fileID: 1360873662}
   transformArm: {fileID: 863626847}
   powerJump: 12
+  fHorizontalDampingBasic: 0.4
+  fHorizontalDampingWhenStopping: 0.7
+  fHorizontalDampingWhenTurning: 0.7
   arrayOfActionPermissionOfPlayer: 01010101
 --- !u!212 &1367805079
 SpriteRenderer:
