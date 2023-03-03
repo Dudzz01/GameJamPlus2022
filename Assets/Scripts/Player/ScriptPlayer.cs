@@ -56,11 +56,11 @@ public class ScriptPlayer : MonoBehaviour
     public float directionPlayerY{get; private set;} // direcao horizontal do player
 
      [SerializeField] 
-     private float fHorizontalDampingBasic = 0.2f;
+     private float fHorizontalDampingBasic = -1f;
      [SerializeField]
-     private float fHorizontalDampingWhenStopping = 0.4f;
+     private float fHorizontalDampingWhenStopping = 1f;
      [SerializeField]
-     private float fHorizontalDampingWhenTurning = 0.4f;
+     private float fHorizontalDampingWhenTurning = 1f;
     #endregion
     #region ActionPermissionVariables
     [SerializeField] private bool[] arrayOfActionPermissionOfPlayer = new bool[4];
