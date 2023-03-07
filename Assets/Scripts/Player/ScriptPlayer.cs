@@ -56,7 +56,7 @@ public class ScriptPlayer : MonoBehaviour
     public float directionPlayerY{get; private set;} // direcao horizontal do player
 
      [SerializeField] 
-     private float fHorizontalDampingBasic = -1f;
+     private float fHorizontalDampingBasic = -3f;
      [SerializeField]
      private float fHorizontalDampingWhenStopping = 1f;
      [SerializeField]
@@ -206,7 +206,8 @@ public class ScriptPlayer : MonoBehaviour
              else
              horizontalSpeedPlayerH *= Mathf.Pow(1f - fHorizontalDampingBasic, Time.deltaTime * 10f);
             //horizontalSpeedPlayerH *= Mathf.Pow(0.3f,Time.deltaTime*10);
-            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8f,8f),rig.velocity.y);
+            Debug.Log("Horzintal speed "+ horizontalSpeedPlayerH);
+            rig.velocity = new Vector2(Mathf.Clamp(horizontalSpeedPlayerH,-8.5f,8.5f),rig.velocity.y);
             
         }  
     }
