@@ -77,7 +77,7 @@ public class ScriptPlayer : MonoBehaviour
         trailRenderer.sortingLayerName = "Player";
         statePlayer = "MovePlayer"; // Stateplayer é o estado de animacao do player
         CanMove = true;
-        dashPower = 10f;
+        dashPower = 9.5f;
         timeDurationDash = 0.6f;
         timeCooldownDash = 0.3f;
         canDash = true;
@@ -124,7 +124,7 @@ public class ScriptPlayer : MonoBehaviour
         // {
         //     DashAction(); // dash = 2;
         // }
-        Walk();
+        JumpInput();
         ManageAllActionsOfPlayer();
         #endregion
         #region ConfigActionsPlayer
@@ -134,6 +134,19 @@ public class ScriptPlayer : MonoBehaviour
         
        
     }
+    private void FixedUpdate()
+    {
+        if(isDashing == true) // enquanto o player estiver "dashando" ele vai retornar para a funcao void e nao executara outro comando
+        {
+            animPlayer.AnimationPlayer("IndioDash");
+            return;
+        }
+        
+         Walk();
+         JumpMovimentEffects();// condicao será feita dentro do método
+         
+    }
+   
     
     private void SlidingWall()
     {
@@ -362,19 +375,21 @@ public class ScriptPlayer : MonoBehaviour
 
     public void ConfigDashVelocity()
     {
-     if(directionPlayerH!=0)
-     {
-        rig.velocity = new Vector2(directionPlayerH*dashPower,0);
-     }
-     //caso o player esteja parado, ou seja, directionPlayerH = 0...
-     if(spritePlayer.flipX == false)
-     {
-        rig.velocity = new Vector2(1*dashPower,0);
-     }
-     else if(spritePlayer.flipX == true)
-     {
-        rig.velocity = new Vector2(-1*dashPower,0);
-     }
+        if(directionPlayerH!=0)
+        {
+            rig.velocity = new Vector2(directionPlayerH*dashPower,0);
+        }
+        //caso o player esteja parado, ou seja, directionPlayerH = 0...
+        if(spritePlayer.flipX == false)
+        {
+            rig.velocity = new Vector2(1*dashPower,0);
+        }
+        else if(spritePlayer.flipX == true)
+        {
+            rig.velocity = new Vector2(-1*dashPower,0);
+        }
+     
+     
       
         return;
     }
@@ -383,8 +398,8 @@ public class ScriptPlayer : MonoBehaviour
     {
        
         //Walk();
-        JumpMovimentEffects();// condicao será feita dentro do método
-        JumpInput();
+        //JumpMovimentEffects();// condicao será feita dentro do método
+        //JumpInput();
         
 
         if(arrayOfActionPermissionOfPlayer[1] == true)
